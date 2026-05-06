@@ -1,73 +1,118 @@
-# React + TypeScript + Vite
+# Paradigm Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Landing page for **Paradigm**, a healthcare analytics engineering portfolio case study focused on outpatient operations, governed KPIs, reproducible analytics, BI-ready evidence, quality checks and a scoped ML prioritization experiment.
 
-Currently, two official plugins are available:
+This repository contains the public-facing web presentation of the project.  
+The analytical engine, pipeline scripts, documentation and source case study live in the main Paradigm repository.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Live Purpose
 
-## React Compiler
+Paradigm Web was built to present the project in a clear, visual and recruiter-friendly way.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The page explains:
 
-## Expanding the ESLint configuration
+- What Paradigm is
+- Why the project exists
+- How the analytical pipeline works
+- How the governed SQLite mart powers BI, validation and ML outputs
+- What metrics are included
+- How the Power BI dashboard and workflow preview look
+- Why the ML component is scoped as a methodology experiment, not a production prediction system
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Project Positioning
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Paradigm is not a clinical product and does not use real patient data.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+It is a synthetic healthcare analytics engineering case study designed to demonstrate:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Data modeling
+- SQL-based analytical layers
+- KPI governance
+- Data quality validation
+- BI consumption
+- Reproducibility
+- Responsible ML framing
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Tech Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- React
+- Vite
+- TypeScript
+- CSS
+- Static assets served from `public/`
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+No backend is required for this landing page.
+
+## Main Sections
+
+The landing includes:
+
+1. **Overview**  
+   Project introduction, positioning, GitHub link and synthetic data disclaimer.
+
+2. **Why Paradigm exists**  
+   Explanation of the operational and analytical problem the project addresses.
+
+3. **How it works**  
+   Three-phase pipeline:
+   - Build the data foundation
+   - Govern the analytics layer
+   - Deliver decision support
+
+4. **Architecture**  
+   Visual explanation of the governed mart as a single source of truth.
+
+5. **Dashboard preview**  
+   Power BI screenshot showing the executive monitoring layer.
+
+6. **Workflow preview**  
+   GIF walkthrough of the analytical flow.
+
+7. **Metrics you can trust**  
+   Governed KPI definitions and analytical scope.
+
+8. **Scoped ML experiment**  
+   Explanation of the no-show prioritization experiment and its limitations.
+
+9. **Run the pipeline**  
+   Reproducibility commands from the main Paradigm project.
+
+## Local Development
+
+Install dependencies:
+
+```bash
+npm install
+
+Run the development server:
+
+npm run dev
+
+Build for production:
+
+npm run build
+
+Preview the production build:
+
+npm run preview
+Assets
+
+Main visual assets are stored in:
+
+public/assets/paradigm/
+
+Expected assets:
+
+powerbi_executive.png
+paradigm-demo-loop.gif
+Related Repository
+
+Main Paradigm repository:
+
+https://github.com/Agus-Delgado/Paradigm-.git
+Disclaimer
+
+This project uses synthetic data only.
+No real patients, providers, clinics or organizations are represented.
+
+Paradigm Web is a portfolio presentation layer, not a healthcare software product.
