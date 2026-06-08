@@ -7,6 +7,7 @@ import { FooterSection } from './sections/FooterSection'
 import { GovernedKpisSection } from './sections/GovernedKpisSection'
 import { HeroSection } from './sections/HeroSection'
 import { MLSection } from './sections/MLSection'
+import { RecentImprovementsSection } from './sections/RecentImprovementsSection'
 import { ProblemSection } from './sections/ProblemSection'
 import { ReproducibilitySection } from './sections/ReproducibilitySection'
 import { ValueChainSection } from './sections/ValueChainSection'
@@ -25,6 +26,7 @@ export function ParadigmLanding() {
       <GovernedKpisSection />
       <AnalyticalQuestionsSection />
       <MLSection />
+      <RecentImprovementsSection />
       <ReproducibilitySection />
       <FinalCtaSection />
       <FooterSection />

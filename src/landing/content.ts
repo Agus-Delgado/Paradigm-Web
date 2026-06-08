@@ -16,9 +16,10 @@ export const hero = {
   title: 'Paradigm',
   subtitle: 'Governed analytics for outpatient operations.',
   description:
-    'A synthetic healthcare analytics project that turns operational activity into reproducible KPIs, BI-ready evidence, quality checks and a scoped ML prioritization experiment.',
+    'From governed synthetic data to measurable business impact — reproducible KPIs, validated metrics, and explainable ML with ARS revenue simulation.',
   disclaimer:
     'Synthetic data only. No real patients, providers, or organizations.',
+  liveDemoBadge: 'Live Demo Available',
   commandCenterTitle: 'Data Command Center',
   commandCenterBadge: 'Preview',
 } as const
@@ -32,6 +33,12 @@ export const heroCommandLayers = [
 
 export const heroAssuranceChips = ['Quality Checks', 'KPI Validation'] as const
 
+export const heroMetricChips = [
+  { label: 'No-show rate', icon: 'sparkline' as const },
+  { label: 'Slots recovered', icon: 'chart' as const },
+  { label: 'ARS impact', icon: 'trend' as const },
+] as const
+
 export const heroSqlSnippet = `SELECT period, no_show_rate, billed_revenue
 FROM governed_kpi_views
 WHERE data_source = 'synthetic';`
@@ -39,10 +46,12 @@ WHERE data_source = 'synthetic';`
 export const badges = [
   'Python',
   'SQL',
-  'SQLite',
+  'Governed Mart',
   'Power BI',
   'Tableau',
   'scikit-learn',
+  'SHAP',
+  'ARS Revenue Simulation',
   'Synthetic Data',
 ] as const
 
@@ -150,6 +159,7 @@ export const demoPreview = {
   title: 'Workflow preview',
   intro:
     'A short recording of how the analytical flow fits together — same device frame as the screenshot above so both feel equally considered.',
+  disclaimer: 'Demo GIF muestra versión temprana del pipeline.',
   gifAlt: 'Short screen capture of the Paradigm workflow — synthetic demonstration only',
 } as const
 
@@ -205,21 +215,108 @@ export const analyticalQuestions = [
 ] as const
 
 export const mlSection = {
-  title: 'Scoped ML experiment',
-  paragraphs: [
-    'Paradigm includes a methodology-focused no-show prioritization experiment. It demonstrates target definition, leakage controls, temporal splitting, ranking-oriented metrics, and interpretability of feature influence.',
-    'It is not a production prediction system. It does not perform clinical decision-making and is not validated for deployment.',
-    'Synthetic data limitations are documented explicitly — including cases where synthetic generator dynamics produce weak discrimination metrics.',
+  title: 'Explainable No-Show Prioritization',
+  intro:
+    'A ranking experiment on the governed mart — SHAP explainability, ARS revenue simulation, and a Streamlit demo. Decision support, not production prediction.',
+  badges: [
+    { label: 'Governed Mart', variant: 'default' as const },
+    { label: 'SHAP Explainability', variant: 'emerald' as const },
+    { label: 'ARS Revenue Simulation', variant: 'emerald' as const },
+    { label: 'Streamlit', variant: 'blue' as const },
+    { label: 'scikit-learn', variant: 'default' as const },
   ],
+  features: [
+    {
+      title: 'SHAP explainability',
+      body: 'SHAP visualizations — global beeswarm summary and local force plots — surface no-show drivers from the governed mart. Auditable for technical and business stakeholders.',
+      accent: 'emerald' as const,
+      highlight: false as const,
+      viz: 'shap' as const,
+      vizCaption: 'SHAP beeswarm summary — illustrative',
+    },
+    {
+      title: 'ARS revenue simulation',
+      body: 'What-if scenarios on the ranked list: outreach on top-N patients, slots recovered, and revenue impact in Argentine pesos (ARS). Synthetic case study — not a clinical or financial guarantee.',
+      accent: 'cyan' as const,
+      highlight: true,
+      viz: 'ars-simulator' as const,
+      vizCaption: 'ARS revenue simulation — illustrative',
+    },
+    {
+      title: 'Streamlit integration',
+      body: 'One demo ties ranking output, SHAP explainability, and ARS revenue simulation — all reading from the governed mart. Reproducible via make demo.',
+      accent: 'blue' as const,
+      highlight: false as const,
+    },
+  ],
+  calloutTitle: 'Documented limitation',
   callout:
-    'Synthetic ROC-AUC can be weak; that limitation is documented as a property of the generator and experimental setup — not surfaced as a fake “success” metric.',
+    'Synthetic ROC-AUC remains modest — a documented property of the generator, not a hidden failure. The value here is methodology: leakage controls, temporal splits, ranking metrics, and honest explainability — not inflated performance claims.',
+} as const
+
+export const recentImprovements = {
+  title: 'Recent Improvements',
+  eyebrow: "What's new",
+  intro:
+    'Latest capabilities on the governed mart — SHAP explainability, ARS revenue simulation, and one-command reproducibility.',
+  items: [
+    {
+      badge: 'SHAP',
+      badgeVariant: 'emerald' as const,
+      title: 'SHAP explainability',
+      body: 'SHAP visualizations on governed mart features — global and local views make influence auditable, not a black-box score.',
+      viz: 'shap' as const,
+      vizCaption: 'SHAP summary plot',
+    },
+    {
+      badge: 'ARS',
+      badgeVariant: 'emerald' as const,
+      title: 'ARS revenue simulation',
+      body: 'Outreach scenarios with slots recovered and revenue impact in ARS — translating model output into business language.',
+      viz: 'ars-simulator' as const,
+      vizCaption: 'ARS scenario bars',
+    },
+    {
+      badge: 'Demo',
+      badgeVariant: 'blue' as const,
+      title: 'Streamlit integration',
+      body: 'Ranking, SHAP explainability, and ARS revenue simulation in one interactive workflow — all from the governed mart.',
+    },
+    {
+      badge: 'make',
+      badgeVariant: 'default' as const,
+      title: 'make all / ml / demo',
+      body: 'make all runs the full pipeline; make ml trains and explains; make demo launches Streamlit — no manual script chaining.',
+    },
+  ],
 } as const
 
 export const reproducibility = {
   title: 'Run the pipeline',
   intro:
-    'The commands below are evidence of an end-to-end analytical pipeline you can run locally. They document build steps — not a hosted SaaS product or service level guarantee.',
-  commands: [
+    'Three commands cover the full analytics engineer workflow — from governed mart to ML explainability and live demo.',
+  professionalPath: [
+    {
+      cmd: 'make all',
+      desc: 'Full pipeline: synthetic data → governed mart → BI exports → validation',
+      icon: 'terminal' as const,
+      primary: true,
+    },
+    {
+      cmd: 'make ml',
+      desc: 'Training, SHAP explainability, and ranking artifacts from the governed mart',
+      icon: 'sparkline' as const,
+      primary: false,
+    },
+    {
+      cmd: 'make demo',
+      desc: 'Streamlit app: SHAP visualizations + ARS revenue simulation',
+      icon: 'chart' as const,
+      primary: false,
+    },
+  ],
+  detailLabel: 'Under the hood',
+  detailCommands: [
     'python scripts/generate_paradigm_v2_synthetic.py',
     'python scripts/build_sqlite_mart.py',
     'python scripts/run_data_quality.py',

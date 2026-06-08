@@ -1,6 +1,17 @@
 import { METRICS_DOC_URL, governedKpis } from '../content'
 import { Section } from '../ui/Section'
 
+const kpiPrefixes: Record<string, string> = {
+  'Total appointments': '#',
+  'Attended appointments': '#',
+  'No-show rate': '%',
+  'Cancellation rate': '%',
+  'Late cancellation rate': '%',
+  'Billed revenue': '$',
+  'Revenue per attended appointment': '$',
+  'Reconciliation gaps': 'Δ',
+}
+
 export function GovernedKpisSection() {
   return (
     <Section id="kpis" title={governedKpis.title} eyebrow="Metrics">
@@ -26,7 +37,12 @@ export function GovernedKpisSection() {
       </p>
       <ul className="kpi-list">
         {governedKpis.items.map((item) => (
-          <li key={item}>{item}</li>
+          <li key={item}>
+            <span className="kpi-prefix" aria-hidden="true">
+              {kpiPrefixes[item] ?? '·'}
+            </span>
+            {item}
+          </li>
         ))}
       </ul>
     </Section>

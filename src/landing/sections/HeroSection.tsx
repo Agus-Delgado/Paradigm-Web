@@ -4,10 +4,17 @@ import {
   hero,
   heroAssuranceChips,
   heroCommandLayers,
+  heroMetricChips,
   heroSqlSnippet,
 } from '../content'
+import { IconChartUp, IconSparkline } from '../ui/DataIcons'
 import { Badge } from '../ui/Badge'
 import { ButtonLink } from '../ui/ButtonLink'
+
+function MetricIcon({ type }: { type: 'sparkline' | 'chart' | 'trend' }) {
+  if (type === 'chart') return <IconChartUp className="hero-cc-metric-icon" />
+  return <IconSparkline className="hero-cc-metric-icon" />
+}
 
 export function HeroSection() {
   return (
@@ -20,6 +27,10 @@ export function HeroSection() {
 
       <div className="section-inner hero-layout">
         <div className="hero-copy">
+          <a href="#workflow-preview" className="hero-live-badge-link">
+            <Badge variant="live">{hero.liveDemoBadge}</Badge>
+          </a>
+
           <div className="hero-title-block">
             <h1 id="hero-title" className="hero-title">
               <span className="hero-title-gradient">{hero.title}</span>
@@ -77,6 +88,15 @@ export function HeroSection() {
                 </span>
               ))}
             </div>
+          </div>
+
+          <div className="hero-cc-metrics" role="list" aria-label="Illustrative metric signals">
+            {heroMetricChips.map((m) => (
+              <span key={m.label} className="hero-cc-metric-chip" role="listitem">
+                <MetricIcon type={m.icon} />
+                {m.label}
+              </span>
+            ))}
           </div>
 
           <div className="hero-cc-sql-wrap">

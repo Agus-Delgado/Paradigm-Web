@@ -10,9 +10,8 @@ export function DemoPreviewSection() {
       className="demo-preview-section"
     >
       <p className="section-intro demo-preview-intro">{demoPreview.intro}</p>
-      <p className="demo-preview-note muted">
-        Workflow recording — secondary to the static dashboard screenshot above. Same synthetic
-        demonstration scope.
+      <p className="demo-preview-disclaimer" role="note">
+        {demoPreview.disclaimer}
       </p>
       <div className="device-frame device-frame--media device-frame--demo">
         <div className="device-bezel" aria-hidden="true" />
