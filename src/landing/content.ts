@@ -12,6 +12,9 @@ export const ARCHITECTURE_DOC_URL =
 export const DASHBOARD_IMAGE_SRC = '/assets/paradigm/powerbi_executive.png'
 export const DEMO_GIF_SRC = '/assets/paradigm/paradigm-demo-loop.gif'
 
+export const SCREENSHOTS_BASE = '/assets/screenshots'
+export const HERO_SCREENSHOT_SRC = `${SCREENSHOTS_BASE}/landing_hero.png`
+
 export const hero = {
   title: 'Paradigm',
   subtitle: 'Governed analytics for outpatient operations.',
@@ -20,28 +23,59 @@ export const hero = {
   disclaimer:
     'Synthetic data only. No real patients, providers, or organizations.',
   liveDemoBadge: 'Live Demo Available',
-  commandCenterTitle: 'Data Command Center',
-  commandCenterBadge: 'Preview',
+  screenshotAlt: 'Paradigm Streamlit app — landing hub on synthetic data',
+  productPreviewLabel: 'Streamlit live demo preview',
 } as const
 
-/** Source / core / outputs for the hero command center (qualitative only). */
-export const heroCommandLayers = [
-  { label: 'Source', value: 'Synthetic CSVs' },
-  { label: 'Core', value: 'Governed SQLite Mart' },
-  { label: 'Outputs', value: 'Power BI, Tableau, ML Experiment' },
-] as const
-
-export const heroAssuranceChips = ['Quality Checks', 'KPI Validation'] as const
-
-export const heroMetricChips = [
-  { label: 'No-show rate', icon: 'sparkline' as const },
-  { label: 'Slots recovered', icon: 'chart' as const },
-  { label: 'ARS impact', icon: 'trend' as const },
-] as const
-
-export const heroSqlSnippet = `SELECT period, no_show_rate, billed_revenue
-FROM governed_kpi_views
-WHERE data_source = 'synthetic';`
+export const liveFeatures = {
+  title: 'En acción',
+  intro:
+    'Real screens from the Streamlit demo — guided analysis, SQL exploration, immersive data views, and explainable ML on the governed mart.',
+  items: [
+    {
+      id: 'landing',
+      title: 'Landing Experience',
+      body: 'Unified entry hub to every Streamlit module: datasets, wizards, explorers, and ML — one governed workflow.',
+      imageSrc: `${SCREENSHOTS_BASE}/landing_hero.png`,
+      imageAlt: 'Paradigm Streamlit landing — module navigation on synthetic data',
+    },
+    {
+      id: 'wizard',
+      title: 'Wizard Inteligente (Root-Cause)',
+      body: 'Contextual step-by-step questions that narrow where operational friction concentrates across your synthetic mart.',
+      imageSrc: `${SCREENSHOTS_BASE}/wizard_questions.png`,
+      imageAlt: 'Root-cause wizard — guided analytical questions',
+    },
+    {
+      id: 'sql-explorer',
+      title: 'SQL Explorer + NL→SQL',
+      body: 'Query the governed mart with SQL or natural language — interactive, schema-aware exploration without leaving the demo.',
+      imageSrc: `${SCREENSHOTS_BASE}/sql_explorer.png`,
+      imageAlt: 'SQL Explorer with natural language to SQL on the governed mart',
+    },
+    {
+      id: 'data-explorer',
+      title: 'Data Explorer Inmersivo',
+      body: 'Row-level inspection of synthetic outpatient records with filters, sorting, and drill-down tables.',
+      imageSrc: `${SCREENSHOTS_BASE}/data_explorer.png`,
+      imageAlt: 'Immersive data explorer — filtered outpatient records',
+    },
+    {
+      id: 'analysis-results',
+      title: 'Análisis Guiado + Recomendaciones',
+      body: 'Guided KPI analysis with charts and actionable recommendations drawn from validated governed views.',
+      imageSrc: `${SCREENSHOTS_BASE}/analysis_results.png`,
+      imageAlt: 'Guided analysis results with KPI charts and recommendations',
+    },
+    {
+      id: 'no-show-shap',
+      title: 'No-Show ML + SHAP Explainability',
+      body: 'Ranking experiment with SHAP beeswarm and local plots — auditable drivers, not a black-box score.',
+      imageSrc: `${SCREENSHOTS_BASE}/no_show_shap.png`,
+      imageAlt: 'No-show ML prioritization with SHAP explainability plots',
+    },
+  ],
+} as const
 
 export const badges = [
   'Python',

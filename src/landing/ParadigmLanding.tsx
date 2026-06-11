@@ -1,6 +1,7 @@
 import { AnalyticalQuestionsSection } from './sections/AnalyticalQuestionsSection'
 import { ArchitectureSection } from './sections/ArchitectureSection'
 import { DashboardEvidenceSection } from './sections/DashboardEvidenceSection'
+import { LiveFeaturesSection } from './sections/LiveFeaturesSection'
 import { DemoPreviewSection } from './sections/DemoPreviewSection'
 import { FinalCtaSection } from './sections/FinalCtaSection'
 import { FooterSection } from './sections/FooterSection'
@@ -21,6 +22,7 @@ export function ParadigmLanding() {
       <ProblemSection />
       <ValueChainSection />
       <ArchitectureSection />
+      <LiveFeaturesSection />
       <DashboardEvidenceSection />
       <DemoPreviewSection />
       <GovernedKpisSection />

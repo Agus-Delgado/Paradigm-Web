@@ -1,4 +1,5 @@
 import { DEMO_GIF_SRC, demoPreview } from '../content'
+import { DeviceFrame } from '../ui/DeviceFrame'
 import { Section } from '../ui/Section'
 
 export function DemoPreviewSection() {
@@ -13,18 +14,7 @@ export function DemoPreviewSection() {
       <p className="demo-preview-disclaimer" role="note">
         {demoPreview.disclaimer}
       </p>
-      <div className="device-frame device-frame--media device-frame--demo">
-        <div className="device-bezel" aria-hidden="true" />
-        <div className="device-screen device-screen--media">
-          <img
-            src={DEMO_GIF_SRC}
-            alt={demoPreview.gifAlt}
-            loading="lazy"
-            decoding="async"
-            className="device-img"
-          />
-        </div>
-      </div>
+      <DeviceFrame variant="demo" src={DEMO_GIF_SRC} alt={demoPreview.gifAlt} />
     </Section>
   )
 }

@@ -1,20 +1,7 @@
-import {
-  badges,
-  GITHUB_REPO_URL,
-  hero,
-  heroAssuranceChips,
-  heroCommandLayers,
-  heroMetricChips,
-  heroSqlSnippet,
-} from '../content'
-import { IconChartUp, IconSparkline } from '../ui/DataIcons'
+import { badges, GITHUB_REPO_URL, hero, HERO_SCREENSHOT_SRC } from '../content'
 import { Badge } from '../ui/Badge'
 import { ButtonLink } from '../ui/ButtonLink'
-
-function MetricIcon({ type }: { type: 'sparkline' | 'chart' | 'trend' }) {
-  if (type === 'chart') return <IconChartUp className="hero-cc-metric-icon" />
-  return <IconSparkline className="hero-cc-metric-icon" />
-}
+import { DeviceFrame } from '../ui/DeviceFrame'
 
 export function HeroSection() {
   return (
@@ -27,7 +14,7 @@ export function HeroSection() {
 
       <div className="section-inner hero-layout">
         <div className="hero-copy">
-          <a href="#workflow-preview" className="hero-live-badge-link">
+          <a href="#live-features" className="hero-live-badge-link">
             <Badge variant="live">{hero.liveDemoBadge}</Badge>
           </a>
 
@@ -65,46 +52,13 @@ export function HeroSection() {
           <p className="disclaimer hero-disclaimer">{hero.disclaimer}</p>
         </div>
 
-        <aside
-          className="hero-command-center"
-          aria-label="Illustrative analytics system preview. Qualitative only — no live metrics."
-        >
-          <header className="hero-cc-header">
-            <span className="hero-cc-title">{hero.commandCenterTitle}</span>
-            <span className="hero-cc-badge">{hero.commandCenterBadge}</span>
-          </header>
-
-          <div className="hero-cc-stack">
-            {heroCommandLayers.map((layer) => (
-              <div key={layer.label} className="hero-cc-row">
-                <span className="hero-cc-k">{layer.label}</span>
-                <span className="hero-cc-v">{layer.value}</span>
-              </div>
-            ))}
-            <div className="hero-cc-assurance" role="list" aria-label="Quality and validation cues">
-              {heroAssuranceChips.map((chip) => (
-                <span key={chip} className="hero-cc-mini-chip" role="listitem">
-                  {chip}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="hero-cc-metrics" role="list" aria-label="Illustrative metric signals">
-            {heroMetricChips.map((m) => (
-              <span key={m.label} className="hero-cc-metric-chip" role="listitem">
-                <MetricIcon type={m.icon} />
-                {m.label}
-              </span>
-            ))}
-          </div>
-
-          <div className="hero-cc-sql-wrap">
-            <p className="hero-cc-sql-label">Illustrative query</p>
-            <pre className="hero-cc-sql">
-              <code>{heroSqlSnippet}</code>
-            </pre>
-          </div>
+        <aside className="hero-product-preview" aria-label={hero.productPreviewLabel}>
+          <DeviceFrame
+            variant="hero"
+            src={HERO_SCREENSHOT_SRC}
+            alt={hero.screenshotAlt}
+            loading="eager"
+          />
         </aside>
       </div>
     </section>

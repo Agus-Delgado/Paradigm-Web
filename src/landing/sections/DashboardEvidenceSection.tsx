@@ -1,4 +1,5 @@
 import { DASHBOARD_IMAGE_SRC, dashboardEvidence } from '../content'
+import { DeviceFrame } from '../ui/DeviceFrame'
 import { Section } from '../ui/Section'
 
 export function DashboardEvidenceSection() {
@@ -10,18 +11,11 @@ export function DashboardEvidenceSection() {
       className="dashboard-evidence-section"
     >
       <p className="section-intro">{dashboardEvidence.caption}</p>
-      <div className="device-frame device-frame--media device-frame--lead">
-        <div className="device-bezel" aria-hidden="true" />
-        <div className="device-screen device-screen--media">
-          <img
-            src={DASHBOARD_IMAGE_SRC}
-            alt={dashboardEvidence.screenshotAlt}
-            loading="lazy"
-            decoding="async"
-            className="device-img"
-          />
-        </div>
-      </div>
+      <DeviceFrame
+        variant="lead"
+        src={DASHBOARD_IMAGE_SRC}
+        alt={dashboardEvidence.screenshotAlt}
+      />
     </Section>
   )
 }

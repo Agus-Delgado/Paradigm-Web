@@ -5,6 +5,7 @@ const NAV_LINKS = [
   { href: '#overview', id: 'overview', label: 'Overview' },
   { href: '#pipeline', id: 'pipeline', label: 'Pipeline' },
   { href: '#architecture', id: 'architecture', label: 'Architecture' },
+  { href: '#live-features', id: 'live-features', label: 'Live Demo' },
   { href: '#dashboard', id: 'dashboard', label: 'Dashboard' },
   { href: '#ml', id: 'ml', label: 'ML' },
   { href: '#reproducibility', id: 'reproducibility', label: 'Reproducibility' },
