@@ -11,25 +11,37 @@ export function ComplementaritySection() {
     >
       <p className="section-intro">{complementarity.intro}</p>
 
-      <div className="complementarity-layers" role="list" aria-label="Portfolio layers by project">
+      <div className="complementarity-cards" role="list" aria-label="Portfolio layers by project">
         {complementarity.layers.map((layer, index) => (
           <article
             key={layer.project}
             role="listitem"
-            className={`complementarity-layer complementarity-layer--${layer.accent}`}
+            className={`complementarity-card complementarity-card--${layer.accent}`}
             aria-labelledby={`complementarity-layer-${index}-title`}
           >
-            <div className="complementarity-layer-index" aria-hidden="true">
-              {index + 1}
-            </div>
-            <div className="complementarity-layer-content">
-              <h3 id={`complementarity-layer-${index}-title`} className="complementarity-layer-title">
+            <span className="complementarity-card-index" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+
+            <div className="complementarity-card-block">
+              <p className="complementarity-card-label">Layer</p>
+              <h3 id={`complementarity-layer-${index}-title`} className="complementarity-card-layer">
                 {layer.title}
               </h3>
-              <p className="complementarity-layer-project">
-                <span className="complementarity-layer-project-label">Project</span>
-                {layer.project}
-              </p>
+            </div>
+
+            <div className="complementarity-card-block">
+              <p className="complementarity-card-label">Project</p>
+              <p className="complementarity-card-project">{layer.project}</p>
+            </div>
+
+            <div className="complementarity-card-block">
+              <p className="complementarity-card-label">Output</p>
+              <p className="complementarity-card-output">{layer.output}</p>
+            </div>
+
+            <div className="complementarity-card-block complementarity-card-block--skills">
+              <p className="complementarity-card-label">Skills</p>
               <ul className="complementarity-skill-list" aria-label={`${layer.project} skills`}>
                 {layer.skills.map((skill) => (
                   <li key={skill} className="complementarity-skill">

@@ -6,6 +6,7 @@ type DeviceFrameProps = {
   variant?: DeviceFrameVariant
   loading?: 'lazy' | 'eager'
   className?: string
+  staticLabel?: boolean
 }
 
 export function DeviceFrame({
@@ -14,11 +15,17 @@ export function DeviceFrame({
   variant = 'lead',
   loading = 'lazy',
   className = '',
+  staticLabel = false,
 }: DeviceFrameProps) {
   return (
     <div
-      className={`device-frame device-frame--media device-frame--${variant} ${className}`.trim()}
+      className={`device-frame device-frame--media device-frame--${variant} ${staticLabel ? 'device-frame--static-label' : ''} ${className}`.trim()}
     >
+      {staticLabel && (
+        <span className="device-frame-static-badge" aria-hidden="true">
+          Static screenshot
+        </span>
+      )}
       <div className="device-bezel" aria-hidden="true" />
       <div className="device-screen device-screen--media">
         <img

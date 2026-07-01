@@ -10,7 +10,6 @@ export const ARCHITECTURE_DOC_URL =
   'https://github.com/Agus-Delgado/Paradigm-/blob/main/docs/architecture.md'
 
 export const SCREENSHOTS_BASE = '/assets/screenshots'
-export const HERO_SCREENSHOT_SRC = `${SCREENSHOTS_BASE}/landing_hero.png`
 export const DASHBOARD_IMAGE_SRC = `${SCREENSHOTS_BASE}/analysis_results.png`
 export const DEMO_PREVIEW_IMAGE_SRC = `${SCREENSHOTS_BASE}/tabs_overview.png`
 
@@ -23,18 +22,41 @@ export const hero = {
     'Paradigm is the deepest case study in the ecosystem, while ClarusFlow and LumenVox extend the portfolio into Python automation and NLP feedback intelligence.',
   disclaimer:
     'Synthetic and portfolio-only projects. No real patients, customers or organizations are represented.',
-  hubBadge: 'Three portfolio projects',
-  screenshotAlt: 'Static screenshot from the Paradigm interactive demo — synthetic portfolio data',
-  productPreviewLabel: 'Static portfolio preview',
-  previewCaption: 'Demo screenshots, not an embedded app',
+  hubBadge: 'Portfolio hub',
+  flowSteps: ['Raw data', 'Quality', 'Analytics', 'NLP insights'] as const,
+} as const
+
+export const heroEcosystemMap = {
+  title: 'Ecosystem map',
+  footer: 'From raw data and messy files to trusted analytics and AI-supported insight.',
+  layers: [
+    {
+      project: 'Paradigm',
+      tagline: 'Structured analytics',
+      signals: 'Governed KPIs · BI · Healthcare analytics',
+      accent: 'paradigm',
+    },
+    {
+      project: 'ClarusFlow',
+      tagline: 'Operational data automation',
+      signals: 'Python · Data quality · ETL',
+      accent: 'clarusflow',
+    },
+    {
+      project: 'LumenVox',
+      tagline: 'Text intelligence',
+      signals: 'NLP · Feedback · Executive insights',
+      accent: 'lumenvox',
+    },
+  ],
 } as const
 
 export const liveFeatures = {
-  title: 'En acción',
+  title: 'Paradigm in action',
   intro:
     'Static screenshots from the separate interactive demo — guided analysis, SQL exploration, immersive data views, and explainable ML on the governed mart.',
   disclaimer:
-    'These are static screenshots from the interactive Paradigm demo. The live Streamlit portal is maintained separately from this landing.',
+    'These are static screenshots from the separate interactive Paradigm demo. The live Streamlit portal is maintained separately from this landing.',
   items: [
     {
       id: 'landing',
@@ -45,7 +67,7 @@ export const liveFeatures = {
     },
     {
       id: 'wizard',
-      title: 'Wizard Inteligente (Root-Cause)',
+      title: 'Root-Cause Wizard',
       body: 'Contextual step-by-step questions that narrow where operational friction concentrates across your synthetic mart.',
       imageSrc: `${SCREENSHOTS_BASE}/wizard_questions.png`,
       imageAlt: 'Root-cause wizard — guided analytical questions',
@@ -59,14 +81,14 @@ export const liveFeatures = {
     },
     {
       id: 'data-explorer',
-      title: 'Data Explorer Inmersivo',
+      title: 'Immersive Data Explorer',
       body: 'Row-level inspection of synthetic outpatient records with filters, sorting, and drill-down tables.',
       imageSrc: `${SCREENSHOTS_BASE}/data_explorer.png`,
       imageAlt: 'Immersive data explorer — filtered outpatient records',
     },
     {
       id: 'analysis-results',
-      title: 'Análisis Guiado + Recomendaciones',
+      title: 'Guided Analysis + Recommendations',
       body: 'Guided KPI analysis with charts and actionable recommendations drawn from validated governed views.',
       imageSrc: `${SCREENSHOTS_BASE}/analysis_results.png`,
       imageAlt: 'Guided analysis results with KPI charts and recommendations',
@@ -81,17 +103,7 @@ export const liveFeatures = {
   ],
 } as const
 
-export const badges = [
-  'Python',
-  'SQL',
-  'Governed Mart',
-  'Power BI',
-  'Tableau',
-  'scikit-learn',
-  'SHAP',
-  'ARS Revenue Simulation',
-  'Synthetic Data',
-] as const
+export const badges = ['Python', 'SQL', 'NLP', 'Synthetic Data', 'BI'] as const
 
 export const ecosystem = {
   title: 'Three complementary Data & AI projects',
@@ -102,6 +114,7 @@ export const ecosystem = {
       id: 'paradigm',
       title: 'Paradigm',
       label: 'Analytics Engineering · BI · Healthcare Analytics',
+      role: 'Governed analytics and BI layer',
       body: 'Governed analytics case study for outpatient operations, with synthetic data, analytical modeling, validated KPIs, BI-ready outputs and scoped ML experimentation.',
       signals: ['SQL', 'BI', 'KPI Governance', 'ML Experiment'],
       accent: 'paradigm',
@@ -110,6 +123,7 @@ export const ecosystem = {
       id: 'clarusflow',
       title: 'ClarusFlow',
       label: 'Python Data Automation · Data Quality · ETL',
+      role: 'Operational automation and data quality layer',
       body: 'Python pipeline that transforms messy SaaS operational files into clean, validated and analysis-ready datasets with QA reports and operational summaries.',
       signals: ['Python', 'pandas', 'ETL', 'Data Quality'],
       accent: 'clarusflow',
@@ -118,6 +132,7 @@ export const ecosystem = {
       id: 'lumenvox',
       title: 'LumenVox',
       label: 'NLP · Feedback Intelligence · Executive Reporting',
+      role: 'Text intelligence and executive insight layer',
       body: 'NLP project that converts unstructured feedback into sentiment, recurring themes, critical signals and executive insights.',
       signals: ['NLP', 'Sentiment', 'Themes', 'Reporting'],
       accent: 'lumenvox',
@@ -135,18 +150,21 @@ export const complementarity = {
     {
       title: 'Data foundation and governed analytics',
       project: 'Paradigm',
+      output: 'Governed mart & BI-ready KPIs',
       skills: ['SQL', 'BI', 'KPI governance', 'analytical modeling', 'ML experiment'],
       accent: 'paradigm',
     },
     {
       title: 'Operational automation and data quality',
       project: 'ClarusFlow',
+      output: 'Validated datasets & QA reports',
       skills: ['Python', 'pandas', 'ingestion', 'cleaning', 'validation', 'ETL'],
       accent: 'clarusflow',
     },
     {
       title: 'Text intelligence and executive insight',
       project: 'LumenVox',
+      output: 'Sentiment themes & executive briefs',
       skills: ['NLP', 'sentiment analysis', 'topic classification', 'reporting'],
       accent: 'lumenvox',
     },
@@ -158,6 +176,8 @@ export const paradigmDeepDive = {
   title: 'Paradigm Deep Dive',
   subtitle: 'A complete analytics engineering case study for healthcare operations.',
   body: 'The following sections go deeper into Paradigm because it is the most developed case study in the ecosystem. It covers pipeline design, governed KPIs, dashboard evidence, scoped ML experimentation and reproducibility.',
+  trioReminder:
+    'Paradigm is the most developed case study; ClarusFlow and LumenVox are covered above.',
 } as const
 
 export const problem = {
@@ -257,6 +277,8 @@ export const dashboardEvidence = {
   title: 'Dashboard preview',
   caption:
     'Executive-style monitoring on synthetic data: attendance, cancellations and revenue signals — for portfolio review only.',
+  disclaimer:
+    'These are static screenshots from the separate interactive Paradigm demo. Not an embedded application.',
   screenshotAlt: 'Power BI executive dashboard — synthetic sample',
 } as const
 
@@ -441,4 +463,9 @@ export const footer = {
   line1: 'Paradigm · ClarusFlow · LumenVox — Data & AI portfolio ecosystem.',
   line2:
     'Synthetic portfolio projects only. No real patients, customers, providers or organizations are represented.',
+  links: [
+    { href: '#ecosystem', label: 'Projects' },
+    { href: '#complementarity', label: 'Layers' },
+    { href: '#paradigm-deep-dive', label: 'Deep Dive' },
+  ],
 } as const

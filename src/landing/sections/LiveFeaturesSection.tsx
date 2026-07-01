@@ -19,7 +19,7 @@ export function LiveFeaturesSection() {
           <article key={item.id} className="card card--live-feature">
             <h3 className="card-title">{item.title}</h3>
             <p className="card-body">{item.body}</p>
-            <DeviceFrame variant="card" src={item.imageSrc} alt={item.imageAlt} />
+            <DeviceFrame variant="card" src={item.imageSrc} alt={item.imageAlt} staticLabel />
           </article>
         ))}
       </div>

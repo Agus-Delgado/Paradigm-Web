@@ -20,6 +20,12 @@ import { NavBar } from './ui/NavBar'
 export function ParadigmLanding() {
   return (
     <div className="landing">
+      <div className="landing-backdrop" aria-hidden="true">
+        <div className="landing-backdrop-grid" />
+        <div className="landing-backdrop-glow landing-backdrop-glow--cyan" />
+        <div className="landing-backdrop-glow landing-backdrop-glow--emerald" />
+        <div className="landing-backdrop-glow landing-backdrop-glow--violet" />
+      </div>
       <NavBar />
       <HeroSection />
       <ProjectEcosystemSection />

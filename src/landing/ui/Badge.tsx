@@ -1,4 +1,4 @@
-type BadgeVariant = 'default' | 'emerald' | 'blue' | 'live'
+type BadgeVariant = 'default' | 'emerald' | 'blue' | 'live' | 'hub'
 
 type BadgeProps = {
   children: string
@@ -6,7 +6,6 @@ type BadgeProps = {
 }
 
 export function Badge({ children, variant = 'default' }: BadgeProps) {
-  const variantClass =
-    variant === 'default' ? '' : ` badge--${variant}`
+  const variantClass = variant === 'default' ? '' : ` badge--${variant}`
   return <span className={`badge${variantClass}`.trim()}>{children}</span>
 }

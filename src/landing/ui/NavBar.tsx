@@ -93,7 +93,8 @@ export function NavBar() {
             href="#overview"
             className={`landing-nav-brand ${activeId === 'overview' ? 'landing-nav-brand--active' : ''}`}
           >
-            Paradigm
+            <span className="landing-nav-brand-main">Data &amp; AI</span>
+            <span className="landing-nav-brand-sub">Ecosystem</span>
           </a>
 
           <div className="landing-nav-desktop">
