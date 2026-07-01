@@ -9,28 +9,32 @@ export const METRICS_DOC_URL =
 export const ARCHITECTURE_DOC_URL =
   'https://github.com/Agus-Delgado/Paradigm-/blob/main/docs/architecture.md'
 
-export const DASHBOARD_IMAGE_SRC = '/assets/paradigm/powerbi_executive.png'
-export const DEMO_GIF_SRC = '/assets/paradigm/paradigm-demo-loop.gif'
-
 export const SCREENSHOTS_BASE = '/assets/screenshots'
 export const HERO_SCREENSHOT_SRC = `${SCREENSHOTS_BASE}/landing_hero.png`
+export const DASHBOARD_IMAGE_SRC = `${SCREENSHOTS_BASE}/analysis_results.png`
+export const DEMO_PREVIEW_IMAGE_SRC = `${SCREENSHOTS_BASE}/tabs_overview.png`
 
 export const hero = {
-  title: 'Paradigm',
-  subtitle: 'Data & AI Project Ecosystem',
+  title: 'Data & AI Project Ecosystem',
+  subtitle: 'Paradigm · ClarusFlow · LumenVox',
   description:
-    'A portfolio hub connecting three complementary projects: Paradigm for governed analytics, ClarusFlow for Python data automation, and LumenVox for NLP feedback intelligence.',
+    'Three complementary portfolio projects covering analytics engineering, Python data automation, data quality, NLP, reporting and business insights.',
+  subcopy:
+    'Paradigm is the deepest case study in the ecosystem, while ClarusFlow and LumenVox extend the portfolio into Python automation and NLP feedback intelligence.',
   disclaimer:
     'Synthetic and portfolio-only projects. No real patients, customers or organizations are represented.',
-  liveDemoBadge: 'Live Demo Available',
-  screenshotAlt: 'Paradigm Streamlit app — landing hub on synthetic data',
-  productPreviewLabel: 'Streamlit live demo preview',
+  hubBadge: 'Three portfolio projects',
+  screenshotAlt: 'Static screenshot from the Paradigm interactive demo — synthetic portfolio data',
+  productPreviewLabel: 'Static portfolio preview',
+  previewCaption: 'Demo screenshots, not an embedded app',
 } as const
 
 export const liveFeatures = {
   title: 'En acción',
   intro:
-    'Real screens from the Streamlit demo — guided analysis, SQL exploration, immersive data views, and explainable ML on the governed mart.',
+    'Static screenshots from the separate interactive demo — guided analysis, SQL exploration, immersive data views, and explainable ML on the governed mart.',
+  disclaimer:
+    'These are static screenshots from the interactive Paradigm demo. The live Streamlit portal is maintained separately from this landing.',
   items: [
     {
       id: 'landing',
@@ -90,37 +94,70 @@ export const badges = [
 ] as const
 
 export const ecosystem = {
-  title: 'Three projects. One Data & AI portfolio.',
+  title: 'Three complementary Data & AI projects',
   intro:
-    'Each project focuses on a different layer of applied data work: governed analytics, operational data automation, and NLP-driven feedback intelligence.',
-  closing:
-    'Together, they show a practical path from raw operational data to trusted analytics, automation and AI-supported decision-making.',
+    'Each project focuses on a different layer of applied data work: governed analytics, operational automation, and NLP-driven insight generation.',
   projects: [
     {
       id: 'paradigm',
       title: 'Paradigm',
       label: 'Analytics Engineering · BI · Healthcare Analytics',
-      body: 'Governed analytics case study for outpatient operations. It builds a synthetic data foundation, a SQLite analytical mart, validated KPIs, BI-ready outputs and a scoped ML prioritization experiment.',
-      signals: ['SQL', 'Power BI', 'Governed KPIs', 'ML Experiment'],
+      body: 'Governed analytics case study for outpatient operations, with synthetic data, analytical modeling, validated KPIs, BI-ready outputs and scoped ML experimentation.',
+      signals: ['SQL', 'BI', 'KPI Governance', 'ML Experiment'],
       accent: 'paradigm',
     },
     {
       id: 'clarusflow',
       title: 'ClarusFlow',
       label: 'Python Data Automation · Data Quality · ETL',
-      body: 'Python pipeline that transforms messy SaaS operational files into clean, validated and analysis-ready datasets. It covers ingestion, normalization, cleaning, QA, master datasets, Markdown reports and Matplotlib charts.',
-      signals: ['Python', 'pandas', 'Data Quality', 'ETL'],
+      body: 'Python pipeline that transforms messy SaaS operational files into clean, validated and analysis-ready datasets with QA reports and operational summaries.',
+      signals: ['Python', 'pandas', 'ETL', 'Data Quality'],
       accent: 'clarusflow',
     },
     {
       id: 'lumenvox',
       title: 'LumenVox',
       label: 'NLP · Feedback Intelligence · Executive Reporting',
-      body: 'NLP project that turns unstructured customer feedback into sentiment, recurring themes, critical signals and executive-level insights for business decision-making.',
-      signals: ['NLP', 'Sentiment', 'Text Analytics', 'Insights'],
+      body: 'NLP project that converts unstructured feedback into sentiment, recurring themes, critical signals and executive insights.',
+      signals: ['NLP', 'Sentiment', 'Themes', 'Reporting'],
       accent: 'lumenvox',
     },
   ],
+} as const
+
+export const complementarity = {
+  title: 'Different layers, one portfolio narrative',
+  intro:
+    'The three projects are intentionally different. Together, they show how operational data, messy files and unstructured text can become trusted analytics and decision-ready insights.',
+  closing:
+    'Together, they demonstrate a practical Data/BI/AI profile across structured analytics, file automation and unstructured text intelligence.',
+  layers: [
+    {
+      title: 'Data foundation and governed analytics',
+      project: 'Paradigm',
+      skills: ['SQL', 'BI', 'KPI governance', 'analytical modeling', 'ML experiment'],
+      accent: 'paradigm',
+    },
+    {
+      title: 'Operational automation and data quality',
+      project: 'ClarusFlow',
+      skills: ['Python', 'pandas', 'ingestion', 'cleaning', 'validation', 'ETL'],
+      accent: 'clarusflow',
+    },
+    {
+      title: 'Text intelligence and executive insight',
+      project: 'LumenVox',
+      skills: ['NLP', 'sentiment analysis', 'topic classification', 'reporting'],
+      accent: 'lumenvox',
+    },
+  ],
+} as const
+
+export const paradigmDeepDive = {
+  eyebrow: 'Deep Dive',
+  title: 'Paradigm Deep Dive',
+  subtitle: 'A complete analytics engineering case study for healthcare operations.',
+  body: 'The following sections go deeper into Paradigm because it is the most developed case study in the ecosystem. It covers pipeline design, governed KPIs, dashboard evidence, scoped ML experimentation and reproducibility.',
 } as const
 
 export const problem = {
@@ -226,9 +263,9 @@ export const dashboardEvidence = {
 export const demoPreview = {
   title: 'Workflow preview',
   intro:
-    'A short recording of how the analytical flow fits together — same device frame as the screenshot above so both feel equally considered.',
-  disclaimer: 'Demo GIF muestra versión temprana del pipeline.',
-  gifAlt: 'Short screen capture of the Paradigm workflow — synthetic demonstration only',
+    'A static overview of how the Paradigm analytical modules connect — portfolio evidence from the separate interactive demo.',
+  disclaimer: 'Static screenshot from the separate interactive demo. Not an embedded application.',
+  imageAlt: 'Paradigm demo module overview — static portfolio screenshot on synthetic data',
 } as const
 
 export const governedKpis = {

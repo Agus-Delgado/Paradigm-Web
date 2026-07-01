@@ -1,4 +1,4 @@
-import { DEMO_GIF_SRC, demoPreview } from '../content'
+import { DEMO_PREVIEW_IMAGE_SRC, demoPreview } from '../content'
 import { DeviceFrame } from '../ui/DeviceFrame'
 import { Section } from '../ui/Section'
 
@@ -14,7 +14,7 @@ export function DemoPreviewSection() {
       <p className="demo-preview-disclaimer" role="note">
         {demoPreview.disclaimer}
       </p>
-      <DeviceFrame variant="demo" src={DEMO_GIF_SRC} alt={demoPreview.gifAlt} />
+      <DeviceFrame variant="demo" src={DEMO_PREVIEW_IMAGE_SRC} alt={demoPreview.imageAlt} />
     </Section>
   )
 }

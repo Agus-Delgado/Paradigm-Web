@@ -7,10 +7,13 @@ export function LiveFeaturesSection() {
     <Section
       id="live-features"
       title={liveFeatures.title}
-      eyebrow="Live Demo"
+      eyebrow="Demo"
       className="live-features-section"
     >
       <p className="section-intro">{liveFeatures.intro}</p>
+      <p className="live-features-disclaimer" role="note">
+        {liveFeatures.disclaimer}
+      </p>
       <div className="card-grid card-grid--live-features">
         {liveFeatures.items.map((item) => (
           <article key={item.id} className="card card--live-feature">

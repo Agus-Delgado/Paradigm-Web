@@ -136,11 +136,11 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.15rem 0.75rem;
+  gap: 0.1rem 0.45rem;
 }
 
 .landing-nav-link {
-  font-size: 0.8rem;
+  font-size: 0.74rem;
   font-weight: 500;
   color: var(--text-muted);
   text-decoration: none;
@@ -471,6 +471,10 @@ button:focus-visible {
     text-align: center;
   }
 
+  .hero-subcopy {
+    margin-inline: auto;
+  }
+
   .hero-layout .badge-row,
   .hero-layout .cta-row {
     justify-content: center;
@@ -553,10 +557,18 @@ button:focus-visible {
 }
 
 .hero-lead {
-  margin: 0 0 1.5rem;
+  margin: 0 0 1rem;
   color: var(--text);
   font-size: 1.02rem;
   line-height: 1.65;
+}
+
+.hero-subcopy {
+  margin: 0 0 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.94rem;
+  line-height: 1.62;
+  max-width: 52ch;
 }
 
 .badge-row {
@@ -717,11 +729,37 @@ button:focus-visible {
 .hero-product-preview {
   position: relative;
   width: 100%;
-  max-width: 100%;
+  max-width: min(100%, 420px);
+  opacity: 0.92;
+}
+
+.hero-preview-caption {
+  margin: 0 0 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
 }
 
 .hero-product-preview .device-frame {
   margin-top: 0;
+}
+
+.device-frame--hero-muted {
+  transform: scale(0.96);
+  transform-origin: center top;
+}
+
+.device-frame--hero-muted .device-screen--media {
+  min-height: min(34vh, 320px);
+  border-color: rgba(34, 211, 238, 0.14);
+  box-shadow: var(--shadow-device), 0 0 36px rgba(34, 211, 238, 0.04);
+}
+
+.device-frame--hero-muted .device-bezel {
+  border-color: rgba(34, 211, 238, 0.12);
 }
 
 .device-frame--hero {
@@ -899,6 +937,18 @@ button:focus-visible {
 
 .live-features-section .section-intro {
   max-width: 62ch;
+}
+
+.live-features-disclaimer {
+  font-size: 0.85rem;
+  margin: -0.25rem 0 1.25rem;
+  max-width: 62ch;
+  padding: 0.55rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid rgba(103, 232, 249, 0.18);
+  background: rgba(103, 232, 249, 0.04);
+  color: var(--text-muted);
+  line-height: 1.5;
 }
 
 .card--improvement {
@@ -1772,4 +1822,134 @@ button:focus-visible {
 .ecosystem-closing {
   margin-top: 1.75rem;
   margin-bottom: 0;
+}
+
+.ecosystem-section--primary .section-title {
+  font-size: clamp(1.65rem, 3.2vw, 2.15rem);
+}
+
+.ecosystem-section--primary .section-intro {
+  font-size: 1.02rem;
+  max-width: 62ch;
+}
+
+/* Complementarity layers */
+.complementarity-section {
+  --violet: #a78bfa;
+}
+
+.complementarity-layers {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+.complementarity-layer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem 1.15rem;
+  align-items: start;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.3rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.complementarity-layer--paradigm {
+  border-left: 3px solid rgba(52, 211, 153, 0.45);
+}
+
+.complementarity-layer--clarusflow {
+  border-left: 3px solid rgba(34, 211, 238, 0.45);
+}
+
+.complementarity-layer--lumenvox {
+  border-left: 3px solid rgba(167, 139, 250, 0.4);
+}
+
+.complementarity-layer-index {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--heading);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.complementarity-layer-title {
+  margin: 0 0 0.55rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--heading);
+  letter-spacing: -0.02em;
+}
+
+.complementarity-layer-project {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.complementarity-layer-project-label {
+  display: inline-block;
+  margin-right: 0.45rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(206, 214, 222, 0.7);
+}
+
+.complementarity-skill-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.complementarity-skill {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(206, 214, 222, 0.95);
+  padding: 0.32rem 0.62rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.complementarity-closing {
+  margin-top: 1.75rem;
+  margin-bottom: 0;
+}
+
+/* Paradigm deep dive separator */
+.paradigm-deep-dive-intro {
+  padding-block: clamp(2.25rem, 5vw, 3.5rem);
+  border-bottom: 1px solid var(--border);
+  background:
+    linear-gradient(180deg, rgba(52, 211, 153, 0.06), transparent 70%),
+    radial-gradient(ellipse 70% 60% at 50% 0%, rgba(34, 211, 238, 0.05), transparent);
+}
+
+.paradigm-deep-dive-subtitle {
+  margin: -0.35rem 0 1rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: rgba(62, 232, 168, 0.9);
+  letter-spacing: -0.01em;
+}
+
+.paradigm-deep-dive-body {
+  margin-bottom: 0;
+  max-width: 62ch;
 }

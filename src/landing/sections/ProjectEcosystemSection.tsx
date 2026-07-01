@@ -6,8 +6,8 @@ export function ProjectEcosystemSection() {
     <Section
       id="ecosystem"
       title={ecosystem.title}
-      eyebrow="Ecosystem"
-      className="ecosystem-section"
+      eyebrow="Projects"
+      className="ecosystem-section ecosystem-section--primary"
     >
       <p className="section-intro">{ecosystem.intro}</p>
 
@@ -36,8 +36,6 @@ export function ProjectEcosystemSection() {
           </article>
         ))}
       </div>
-
-      <p className="section-intro ecosystem-closing">{ecosystem.closing}</p>
     </Section>
   )
 }

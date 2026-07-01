@@ -14,8 +14,8 @@ export function HeroSection() {
 
       <div className="section-inner hero-layout">
         <div className="hero-copy">
-          <a href="#live-features" className="hero-live-badge-link">
-            <Badge variant="live">{hero.liveDemoBadge}</Badge>
+          <a href="#ecosystem" className="hero-live-badge-link">
+            <Badge variant="live">{hero.hubBadge}</Badge>
           </a>
 
           <div className="hero-title-block">
@@ -26,6 +26,7 @@ export function HeroSection() {
           </div>
 
           <p className="hero-lead">{hero.description}</p>
+          <p className="hero-subcopy">{hero.subcopy}</p>
 
           <div className="badge-row" role="list">
             {badges.map((b) => (
@@ -44,8 +45,8 @@ export function HeroSection() {
             >
               View on GitHub
             </ButtonLink>
-            <a href="#pipeline" className="btn btn-secondary">
-              See how it works
+            <a href="#ecosystem" className="btn btn-secondary">
+              Explore projects
             </a>
           </div>
 
@@ -53,11 +54,13 @@ export function HeroSection() {
         </div>
 
         <aside className="hero-product-preview" aria-label={hero.productPreviewLabel}>
+          <p className="hero-preview-caption">{hero.previewCaption}</p>
           <DeviceFrame
             variant="hero"
             src={HERO_SCREENSHOT_SRC}
             alt={hero.screenshotAlt}
             loading="eager"
+            className="device-frame--hero-muted"
           />
         </aside>
       </div>
