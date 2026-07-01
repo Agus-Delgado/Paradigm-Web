@@ -7,6 +7,7 @@ import { FinalCtaSection } from './sections/FinalCtaSection'
 import { FooterSection } from './sections/FooterSection'
 import { GovernedKpisSection } from './sections/GovernedKpisSection'
 import { HeroSection } from './sections/HeroSection'
+import { ProjectEcosystemSection } from './sections/ProjectEcosystemSection'
 import { MLSection } from './sections/MLSection'
 import { RecentImprovementsSection } from './sections/RecentImprovementsSection'
 import { ProblemSection } from './sections/ProblemSection'
@@ -19,6 +20,7 @@ export function ParadigmLanding() {
     <div className="landing">
       <NavBar />
       <HeroSection />
+      <ProjectEcosystemSection />
       <ProblemSection />
       <ValueChainSection />
       <ArchitectureSection />

@@ -17,11 +17,11 @@ export const HERO_SCREENSHOT_SRC = `${SCREENSHOTS_BASE}/landing_hero.png`
 
 export const hero = {
   title: 'Paradigm',
-  subtitle: 'Governed analytics for outpatient operations.',
+  subtitle: 'Data & AI Project Ecosystem',
   description:
-    'From governed synthetic data to measurable business impact — reproducible KPIs, validated metrics, and explainable ML with ARS revenue simulation.',
+    'A portfolio hub connecting three complementary projects: Paradigm for governed analytics, ClarusFlow for Python data automation, and LumenVox for NLP feedback intelligence.',
   disclaimer:
-    'Synthetic data only. No real patients, providers, or organizations.',
+    'Synthetic and portfolio-only projects. No real patients, customers or organizations are represented.',
   liveDemoBadge: 'Live Demo Available',
   screenshotAlt: 'Paradigm Streamlit app — landing hub on synthetic data',
   productPreviewLabel: 'Streamlit live demo preview',
@@ -89,10 +89,44 @@ export const badges = [
   'Synthetic Data',
 ] as const
 
+export const ecosystem = {
+  title: 'Three projects. One Data & AI portfolio.',
+  intro:
+    'Each project focuses on a different layer of applied data work: governed analytics, operational data automation, and NLP-driven feedback intelligence.',
+  closing:
+    'Together, they show a practical path from raw operational data to trusted analytics, automation and AI-supported decision-making.',
+  projects: [
+    {
+      id: 'paradigm',
+      title: 'Paradigm',
+      label: 'Analytics Engineering · BI · Healthcare Analytics',
+      body: 'Governed analytics case study for outpatient operations. It builds a synthetic data foundation, a SQLite analytical mart, validated KPIs, BI-ready outputs and a scoped ML prioritization experiment.',
+      signals: ['SQL', 'Power BI', 'Governed KPIs', 'ML Experiment'],
+      accent: 'paradigm',
+    },
+    {
+      id: 'clarusflow',
+      title: 'ClarusFlow',
+      label: 'Python Data Automation · Data Quality · ETL',
+      body: 'Python pipeline that transforms messy SaaS operational files into clean, validated and analysis-ready datasets. It covers ingestion, normalization, cleaning, QA, master datasets, Markdown reports and Matplotlib charts.',
+      signals: ['Python', 'pandas', 'Data Quality', 'ETL'],
+      accent: 'clarusflow',
+    },
+    {
+      id: 'lumenvox',
+      title: 'LumenVox',
+      label: 'NLP · Feedback Intelligence · Executive Reporting',
+      body: 'NLP project that turns unstructured customer feedback into sentiment, recurring themes, critical signals and executive-level insights for business decision-making.',
+      signals: ['NLP', 'Sentiment', 'Text Analytics', 'Insights'],
+      accent: 'lumenvox',
+    },
+  ],
+} as const
+
 export const problem = {
   title: 'Why Paradigm exists',
   paragraphs: [
-    'Outpatient operations generate friction: no-shows, late cancellations, schedule gaps and billing mismatches. Paradigm focuses on building a trusted analytical layer before insights are presented.',
+    'Outpatient operations generate friction: no-shows, late cancellations, schedule gaps and billing mismatches. Paradigm focuses on building a trusted analytical layer before insights are presented. It is the primary in-depth case study within this three-project Data & AI portfolio.',
   ],
 } as const
 
@@ -362,11 +396,12 @@ export const reproducibility = {
 } as const
 
 export const finalCta = {
-  title: 'From dashboard evidence to governed analytics',
-  body: 'Paradigm was built to show how analytical systems should be structured before insights are trusted: definitions, lineage, validation, consumption layers, and honest limitations.',
+  title: 'From data foundations to applied AI',
+  body: 'Paradigm, ClarusFlow and LumenVox show three complementary layers of modern data work: governed analytics, Python automation, and NLP-driven business intelligence.',
 } as const
 
 export const footer = {
-  line1: 'Paradigm — Synthetic healthcare analytics engineering case study.',
-  line2: 'Synthetic data only. No real patients, providers, or organizations.',
+  line1: 'Paradigm · ClarusFlow · LumenVox — Data & AI portfolio ecosystem.',
+  line2:
+    'Synthetic portfolio projects only. No real patients, customers, providers or organizations are represented.',
 } as const

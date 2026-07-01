@@ -136,7 +136,7 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.15rem 1rem;
+  gap: 0.15rem 0.75rem;
 }
 
 .landing-nav-link {
@@ -1630,4 +1630,146 @@ button:focus-visible {
 /* Subtle section rhythm */
 .landing-section:nth-child(even) {
   background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(103, 232, 249, 0.02), transparent);
+}
+
+/* Project ecosystem */
+.ecosystem-section {
+  --violet: #a78bfa;
+}
+
+.ecosystem-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.15rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .ecosystem-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+.ecosystem-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 1.35rem 1.4rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.ecosystem-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.ecosystem-card--paradigm {
+  border-top: 3px solid rgba(52, 211, 153, 0.5);
+}
+
+.ecosystem-card--paradigm:hover {
+  border-color: rgba(52, 211, 153, 0.2);
+  box-shadow: var(--shadow-card), 0 0 20px var(--glow-emerald);
+}
+
+.ecosystem-card--clarusflow {
+  border-top: 3px solid rgba(34, 211, 238, 0.5);
+}
+
+.ecosystem-card--clarusflow:hover {
+  border-color: rgba(34, 211, 238, 0.2);
+  box-shadow: var(--shadow-card), 0 0 20px var(--glow-cyan);
+}
+
+.ecosystem-card--lumenvox {
+  border-top: 3px solid rgba(167, 139, 250, 0.45);
+}
+
+.ecosystem-card--lumenvox:hover {
+  border-color: rgba(167, 139, 250, 0.2);
+  box-shadow: var(--shadow-card), 0 0 20px rgba(167, 139, 250, 0.1);
+}
+
+.ecosystem-card-header {
+  margin-bottom: 0.85rem;
+}
+
+.ecosystem-card-label {
+  margin: 0 0 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.ecosystem-card--paradigm .ecosystem-card-label {
+  color: rgba(62, 232, 168, 0.85);
+}
+
+.ecosystem-card--clarusflow .ecosystem-card-label {
+  color: rgba(96, 165, 250, 0.9);
+}
+
+.ecosystem-card--lumenvox .ecosystem-card-label {
+  color: rgba(167, 139, 250, 0.9);
+}
+
+.ecosystem-card-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--heading);
+  letter-spacing: -0.02em;
+}
+
+.ecosystem-card-body {
+  margin: 0 0 1.1rem;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.58;
+  flex: 1;
+}
+
+.ecosystem-signal-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: auto;
+}
+
+.ecosystem-signal {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(206, 214, 222, 0.95);
+  padding: 0.35rem 0.68rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  line-height: 1.3;
+}
+
+.ecosystem-card--paradigm .ecosystem-signal {
+  border-color: rgba(52, 211, 153, 0.15);
+}
+
+.ecosystem-card--clarusflow .ecosystem-signal {
+  border-color: rgba(34, 211, 238, 0.15);
+}
+
+.ecosystem-card--lumenvox .ecosystem-signal {
+  border-color: rgba(167, 139, 250, 0.15);
+}
+
+.ecosystem-closing {
+  margin-top: 1.75rem;
+  margin-bottom: 0;
 }
