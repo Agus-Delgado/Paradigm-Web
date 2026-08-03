@@ -1,5 +1,5 @@
-import { hero } from '../content'
 import { useSceneReveal } from '../ui/useSceneReveal'
+import { useContent } from '../i18n'
 
 type DataNode = {
   id: string
@@ -12,17 +12,18 @@ type DataNode = {
 
 type DataEdge = { from: string; to: string; tone?: 'ochre' | 'mineral' | 'oxblood' }
 
-const DATA_NODES: readonly DataNode[] = [
-  { id: 'n1', label: 'appointments.csv', x: 28, y: 42, tone: 'ochre' },
-  { id: 'n2', label: 'patients.csv', x: 118, y: 22, tone: 'muted' },
-  { id: 'n3', label: 'specialty_id', x: 72, y: 118, tone: 'ochre', key: true },
-  { id: 'n4', label: 'lead_time_days', x: 188, y: 96, tone: 'mineral' },
-  { id: 'n5', label: 'attendance_status', x: 248, y: 48, tone: 'mineral', key: true },
-  { id: 'n6', label: 'mart.fact_visits', x: 312, y: 128, tone: 'mineral', key: true },
-  { id: 'n7', label: 'decisión', x: 356, y: 72, tone: 'oxblood', key: true },
-]
+function buildDesktopNodes(decisionLabel: string): readonly DataNode[] {
+  return [
+    { id: 'n1', label: 'appointments.csv', x: 28, y: 42, tone: 'ochre' },
+    { id: 'n2', label: 'patients.csv', x: 118, y: 22, tone: 'muted' },
+    { id: 'n3', label: 'specialty_id', x: 72, y: 118, tone: 'ochre', key: true },
+    { id: 'n4', label: 'lead_time_days', x: 188, y: 96, tone: 'mineral' },
+    { id: 'n5', label: 'attendance_status', x: 248, y: 48, tone: 'mineral', key: true },
+    { id: 'n6', label: 'mart.fact_visits', x: 312, y: 128, tone: 'mineral', key: true },
+    { id: 'n7', label: decisionLabel, x: 356, y: 72, tone: 'oxblood', key: true },
+  ]
+}
 
-/** Desktop edges: fragmentation → structured path */
 const DATA_EDGES: readonly DataEdge[] = [
   { from: 'n1', to: 'n3', tone: 'ochre' },
   { from: 'n2', to: 'n3' },
@@ -32,12 +33,14 @@ const DATA_EDGES: readonly DataEdge[] = [
   { from: 'n6', to: 'n7', tone: 'oxblood' },
 ]
 
-const MOBILE_NODES: readonly DataNode[] = [
-  { id: 'n1', label: 'appointments.csv', x: 36, y: 48, tone: 'ochre' },
-  { id: 'n3', label: 'specialty_id', x: 120, y: 120, tone: 'ochre', key: true },
-  { id: 'n5', label: 'attendance_status', x: 210, y: 56, tone: 'mineral', key: true },
-  { id: 'n7', label: 'decisión', x: 300, y: 110, tone: 'oxblood', key: true },
-]
+function buildMobileNodes(decisionLabel: string): readonly DataNode[] {
+  return [
+    { id: 'n1', label: 'appointments.csv', x: 36, y: 48, tone: 'ochre' },
+    { id: 'n3', label: 'specialty_id', x: 120, y: 120, tone: 'ochre', key: true },
+    { id: 'n5', label: 'attendance_status', x: 210, y: 56, tone: 'mineral', key: true },
+    { id: 'n7', label: decisionLabel, x: 300, y: 110, tone: 'oxblood', key: true },
+  ]
+}
 
 const MOBILE_EDGES: readonly DataEdge[] = [
   { from: 'n1', to: 'n3', tone: 'ochre' },
@@ -108,6 +111,9 @@ function DataFieldSvg({
 
 export function HeroSection() {
   const revealRef = useSceneReveal<HTMLElement>()
+  const { hero } = useContent()
+  const desktopNodes = buildDesktopNodes(hero.decisionNodeLabel)
+  const mobileNodes = buildMobileNodes(hero.decisionNodeLabel)
 
   return (
     <section
@@ -122,17 +128,17 @@ export function HeroSection() {
           <p className="hero-case-id">{hero.caseId}</p>
 
           <h1 id="hero-title" className="hero-title">
-            Antes de tomar una{' '}
-            <span className="text-accent text-accent--decision">decisión</span>, alguien tiene que
-            demostrar de dónde salió cada{' '}
-            <span className="text-accent text-accent--metric">número</span>.
+            {hero.titleBefore}
+            <span className="text-accent text-accent--decision">{hero.titleDecision}</span>
+            {hero.titleMid}
+            <span className="text-accent text-accent--metric">{hero.titleMetric}</span>
+            {hero.titleAfter}
           </h1>
 
           <p className="hero-body">
-            Turnos, pacientes, especialidades y señales operativas parten de fuentes fragmentadas.
-            Paradigm las convierte en un análisis{' '}
-            <span className="text-accent text-accent--structure">validado</span>, reproducible y
-            documentado hasta la decisión.
+            {hero.bodyBefore}
+            <span className="text-accent text-accent--structure">{hero.bodyValidated}</span>
+            {hero.bodyAfter}
           </p>
 
           <p className="hero-continue">
@@ -145,16 +151,17 @@ export function HeroSection() {
         <div className="hero-data-field" aria-hidden="true">
           <div className="hero-data-field-frame">
             <p className="hero-data-field-caption">
-              Fuentes → <span className="text-accent text-accent--structure">estructura</span>
+              {hero.dataCaptionBefore}
+              <span className="text-accent text-accent--structure">{hero.dataCaptionStructure}</span>
             </p>
             <DataFieldSvg
               className="hero-data-svg hero-data-svg--desktop"
-              nodes={DATA_NODES}
+              nodes={desktopNodes}
               edges={DATA_EDGES}
             />
             <DataFieldSvg
               className="hero-data-svg hero-data-svg--mobile"
-              nodes={MOBILE_NODES}
+              nodes={mobileNodes}
               edges={MOBILE_EDGES}
             />
           </div>

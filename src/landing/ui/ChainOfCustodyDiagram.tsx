@@ -6,9 +6,17 @@ type ChainOfCustodyDiagramProps = {
   nodes: readonly ChainOfCustodyNode[]
   listLabel: string
   headline?: string
+  trackLabel: string
+  fallbackLinkLabel: string
 }
 
-export function ChainOfCustodyDiagram({ nodes, listLabel, headline }: ChainOfCustodyDiagramProps) {
+export function ChainOfCustodyDiagram({
+  nodes,
+  listLabel,
+  headline,
+  trackLabel,
+  fallbackLinkLabel,
+}: ChainOfCustodyDiagramProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null)
   const [drawn, setDrawn] = useState(() =>
     typeof window !== 'undefined'
@@ -63,7 +71,7 @@ export function ChainOfCustodyDiagram({ nodes, listLabel, headline }: ChainOfCus
     >
       {headline ? <p className="custody-headline">{headline}</p> : null}
 
-      <ol className="custody-track" aria-label="Cadena de custodia">
+      <ol className="custody-track" aria-label={trackLabel}>
         {nodes.map((node, index) => {
           const expanded = expandedId === node.id
           const detailId = `${panelId}-${node.id}`
@@ -90,32 +98,27 @@ export function ChainOfCustodyDiagram({ nodes, listLabel, headline }: ChainOfCus
                 <div id={detailId} className="custody-node-detail">
                   <p className="custody-node-title">{node.title}</p>
                   <p className="custody-node-body">
-                    {'citationPhrase' in node &&
-                    node.citationPhrase &&
-                    'folioIds' in node &&
-                    node.folioIds ? (
-                      <>
-                        {node.body.split(node.citationPhrase).map((part, i, parts) =>
-                          i < parts.length - 1 ? (
-                            <span key={`${node.id}-part-${i}`}>
-                              {part}
-                              <Citation folioIds={[...node.folioIds]}>
-                                {node.citationPhrase}
-                              </Citation>
-                            </span>
-                          ) : (
-                            <span key={`${node.id}-tail`}>{part}</span>
-                          ),
-                        )}
-                      </>
-                    ) : (
-                      node.body
-                    )}
+                    {(() => {
+                      const phrase = node.citationPhrase
+                      const folioIds = node.folioIds
+                      if (!phrase || !folioIds?.length) return node.body
+                      const ids = [...folioIds]
+                      return node.body.split(phrase).map((part, i, parts) =>
+                        i < parts.length - 1 ? (
+                          <span key={`${node.id}-part-${i}`}>
+                            {part}
+                            <Citation folioIds={ids}>{phrase}</Citation>
+                          </span>
+                        ) : (
+                          <span key={`${node.id}-tail`}>{part}</span>
+                        ),
+                      )
+                    })()}
                   </p>
                   {'href' in node && node.href ? (
                     <p className="custody-node-link-line">
                       <a href={node.href} className="inline-link">
-                        {node.hrefLabel ?? 'Ver referencia'}
+                        {node.hrefLabel ?? fallbackLinkLabel}
                       </a>
                     </p>
                   ) : null}

@@ -1,4 +1,5 @@
 import type { DecisionEntry } from '../content'
+import { useContent } from '../i18n'
 import { Citation } from './Citation'
 
 type DecisionLogProps = {
@@ -6,6 +7,9 @@ type DecisionLogProps = {
 }
 
 export function DecisionLog({ entries }: DecisionLogProps) {
+  const { ui } = useContent()
+  const labels = ui.decisionLog
+
   return (
     <div className="decision-log">
       {entries.map((entry) => (
@@ -16,13 +20,13 @@ export function DecisionLog({ entries }: DecisionLogProps) {
               <span className="decision-verdict">{entry.decision}</span>
             </span>
             <span className="decision-status" data-status={entry.status}>
-              Documentada
+              {labels.statusDocumented}
             </span>
           </summary>
 
           <div className="decision-body">
             <div className="decision-field">
-              <p className="decision-field-label">Hallazgo</p>
+              <p className="decision-field-label">{labels.finding}</p>
               <p className="decision-field-text">
                 <Citation folioIds={[...entry.evidenceFolioIds]}>{entry.finding}</Citation>
               </p>
@@ -30,17 +34,17 @@ export function DecisionLog({ entries }: DecisionLogProps) {
 
             {entry.limitation ? (
               <div className="decision-field">
-                <p className="decision-field-label">Limitación</p>
+                <p className="decision-field-label">{labels.limitation}</p>
                 <p className="decision-field-text">{entry.limitation}</p>
               </div>
             ) : null}
 
             <div className="decision-field">
-              <p className="decision-field-label">Evidencia citada</p>
+              <p className="decision-field-label">{labels.citedEvidence}</p>
               <p className="decision-field-text">
-                Folios{' '}
+                {labels.citedEvidenceLead}{' '}
                 <Citation folioIds={[...entry.evidenceFolioIds]}>
-                  análisis guiado y explicabilidad SHAP
+                  {labels.citedEvidencePhrase}
                 </Citation>
               </p>
             </div>

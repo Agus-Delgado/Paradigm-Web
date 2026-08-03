@@ -1,6 +1,8 @@
-import { useEffect, useId, useRef, useState } from 'react'
-import { caseIndex } from '../content'
+import { useEffect, useId, useMemo, useRef, useState } from 'react'
+import { CASE_INDEX_TARGETS } from '../content'
 import type { CaseSceneStatus } from '../content'
+import { formatMessage, useContent } from '../i18n'
+import { LanguageSwitcher } from './LanguageSwitcher'
 import { useScrollSpy } from './useScrollSpy'
 
 function sceneNumber(index: number) {
@@ -17,10 +19,12 @@ function sceneStatus(
   return 'pending'
 }
 
-const TARGET_IDS = caseIndex.map((entry) => entry.targetId)
 const DESKTOP_QUERY = '(min-width: 1200px)'
+const TARGET_IDS = [...CASE_INDEX_TARGETS]
 
 export function CaseIndex() {
+  const content = useContent()
+  const { caseIndex, ui } = content
   const [open, setOpen] = useState(false)
   const [isDesktop, setIsDesktop] = useState(false)
   const panelId = useId()
@@ -33,10 +37,15 @@ export function CaseIndex() {
 
   const activeEntry = caseIndex.find((entry) => entry.targetId === activeId)
   const activeIndex = activeEntry ? caseIndex.indexOf(activeEntry) : -1
-  const sceneIndicator =
-    activeIndex >= 0
-      ? `Escena ${activeIndex + 1} de ${caseIndex.length}`
-      : `Escena — de ${caseIndex.length}`
+  const sceneIndicator = useMemo(() => {
+    if (activeIndex >= 0) {
+      return formatMessage(ui.caseIndex.sceneOf, {
+        current: activeIndex + 1,
+        total: caseIndex.length,
+      })
+    }
+    return formatMessage(ui.caseIndex.sceneIdle, { total: caseIndex.length })
+  }, [activeIndex, caseIndex.length, ui.caseIndex.sceneIdle, ui.caseIndex.sceneOf])
 
   useEffect(() => {
     const media = window.matchMedia(DESKTOP_QUERY)
@@ -110,8 +119,11 @@ export function CaseIndex() {
   if (isDesktop) {
     return (
       <header className="case-index">
-        <nav className="case-index-rail" aria-label="Índice del expediente">
-          <p className="case-index-rail-title">Expediente</p>
+        <nav className="case-index-rail" aria-label={ui.caseIndex.navLabel}>
+          <div className="case-index-rail-header">
+            <p className="case-index-rail-title">{ui.caseIndex.railTitle}</p>
+            <LanguageSwitcher />
+          </div>
           {list}
         </nav>
       </header>
@@ -120,7 +132,7 @@ export function CaseIndex() {
 
   return (
     <header className="case-index">
-      <nav className="case-index-bar" aria-label="Índice del expediente">
+      <nav className="case-index-bar" aria-label={ui.caseIndex.navLabel}>
         <div className="case-index-bar-strip">
           <div className="case-index-bar-current">
             {activeIndex >= 0 ? (
@@ -131,21 +143,26 @@ export function CaseIndex() {
                 <span className="case-index-bar-label">{activeEntry?.label}</span>
               </>
             ) : (
-              <span className="case-index-bar-label case-index-bar-label--idle">Expediente</span>
+              <span className="case-index-bar-label case-index-bar-label--idle">
+                {ui.caseIndex.idleLabel}
+              </span>
             )}
             <span className="case-index-bar-mobile-indicator">{sceneIndicator}</span>
           </div>
 
-          <button
-            ref={toggleRef}
-            type="button"
-            className="case-index-toggle"
-            aria-expanded={open}
-            aria-controls={panelId}
-            onClick={() => setOpen((value) => !value)}
-          >
-            {open ? 'Cerrar' : 'Índice'}
-          </button>
+          <div className="case-index-bar-actions">
+            <LanguageSwitcher />
+            <button
+              ref={toggleRef}
+              type="button"
+              className="case-index-toggle"
+              aria-expanded={open}
+              aria-controls={panelId}
+              onClick={() => setOpen((value) => !value)}
+            >
+              {open ? ui.caseIndex.toggleClose : ui.caseIndex.toggleOpen}
+            </button>
+          </div>
         </div>
 
         <div

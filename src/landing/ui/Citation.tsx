@@ -1,4 +1,5 @@
 import type { KeyboardEvent, ReactNode } from 'react'
+import { formatMessage, useContent } from '../i18n'
 import { useEvidence } from './useEvidence'
 
 export type CitationProps = {
@@ -12,13 +13,14 @@ function formatMarker(numbers: string[]) {
 
 export function Citation({ folioIds, children }: CitationProps) {
   const { cite, clearCite, getFolioNumber, scrollToFolio } = useEvidence()
+  const { ui } = useContent()
 
   const numbers = folioIds.map((id) => getFolioNumber(id) ?? id)
   const marker = formatMarker(numbers)
   const label =
     folioIds.length === 1
-      ? `Ver folio ${numbers[0]}`
-      : `Ver folios ${numbers.join(', ')}`
+      ? formatMessage(ui.citation.viewFolio, { n: numbers[0] ?? '' })
+      : formatMessage(ui.citation.viewFolios, { n: numbers.join(', ') })
 
   const highlight = () => cite(folioIds)
   const unhighlight = () => clearCite()

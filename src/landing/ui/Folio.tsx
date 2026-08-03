@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react'
+import { formatMessage, useContent } from '../i18n'
 import { useEvidence } from './useEvidence'
 
 export type FolioProps = {
@@ -23,12 +24,15 @@ export function Folio({
   src,
   alt,
   context,
-  source = 'Captura estática — demo Streamlit separada',
+  source,
   variant = 'full',
   cited,
   tone,
 }: FolioProps) {
   const { citedIds, registerFolio, unregisterFolio } = useEvidence()
+  const { ui } = useContent()
+  const folioUi = ui.folio
+  const resolvedSource = source ?? folioUi.defaultSource
   const isCited = cited ?? citedIds.has(id)
   const [zoomed, setZoomed] = useState(false)
   const triggerRef = useRef<HTMLButtonElement>(null)
@@ -84,7 +88,7 @@ export function Folio({
           </div>
           <p className="folio-title">{title}</p>
           <p className="folio-context">{context}</p>
-          {source ? <p className="folio-source">{source}</p> : null}
+          {resolvedSource ? <p className="folio-source">{resolvedSource}</p> : null}
         </figcaption>
 
         {src ? (
@@ -102,14 +106,18 @@ export function Folio({
               className="folio-zoom-trigger"
               onClick={() => setZoomed(true)}
               aria-haspopup="dialog"
-              aria-label={`Ampliar folio ${number}: ${title}`}
+              aria-label={formatMessage(folioUi.enlargeAria, { number, title })}
             >
-              Ampliar
+              {folioUi.enlarge}
             </button>
           </div>
         ) : (
-          <div className="folio-fallback" role="img" aria-label={`${alt} — captura pendiente`}>
-            <span className="folio-fallback-label">Captura pendiente</span>
+          <div
+            className="folio-fallback"
+            role="img"
+            aria-label={formatMessage(folioUi.pendingAria, { alt })}
+          >
+            <span className="folio-fallback-label">{folioUi.pendingCapture}</span>
           </div>
         )}
       </figure>
@@ -135,7 +143,7 @@ export function Folio({
                 className="folio-zoom-close"
                 onClick={() => setZoomed(false)}
               >
-                Cerrar
+                {folioUi.close}
               </button>
             </div>
             <img src={src} alt={alt} className="folio-zoom-image" />

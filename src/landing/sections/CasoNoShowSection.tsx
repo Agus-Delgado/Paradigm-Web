@@ -1,16 +1,16 @@
-import { analyticalQuestions, casoNoShow } from '../content'
+import { useContent } from '../i18n'
 import { Citation } from '../ui/Citation'
 import { DecisionLog } from '../ui/DecisionLog'
 import { Folio } from '../ui/Folio'
 import { Section } from '../ui/Section'
 
-const [folio01, folio02, folio03, folio04, folio05] = casoNoShow.folios
-
-const threadIds = new Set<string>(casoNoShow.blocks.pregunta.threads)
-const preguntaThreads = analyticalQuestions.filter((q) => threadIds.has(q.id))
-
 export function CasoNoShowSection() {
-  const { blocks } = casoNoShow
+  const { casoNoShow, analyticalQuestions } = useContent()
+  const { blocks, folios } = casoNoShow
+  const [folio01, folio02, folio03, folio04, folio05] = folios
+
+  const threadIds = new Set<string>(blocks.pregunta.threads)
+  const preguntaThreads = analyticalQuestions.filter((q) => threadIds.has(q.id))
 
   return (
     <Section
@@ -22,11 +22,11 @@ export function CasoNoShowSection() {
       className="caso-no-show-section"
     >
       <p className="section-intro">
-        Un solo recorrido sobre el mart gobernado: formular la pregunta, explorar el grano, leer la{' '}
-        <span className="text-accent text-accent--evidence">evidencia</span> y registrar qué se
-        decide — con{' '}
-        <span className="text-accent text-accent--limit">limitación</span> explícita, sin cifras
-        inventadas.
+        {casoNoShow.introBefore}
+        <span className="text-accent text-accent--evidence">{casoNoShow.introEvidence}</span>
+        {casoNoShow.introMid}
+        <span className="text-accent text-accent--limit">{casoNoShow.introLimit}</span>
+        {casoNoShow.introAfter}
       </p>
 
       <div className="caso-block">
@@ -107,13 +107,7 @@ export function CasoNoShowSection() {
         </p>
         <aside className="caso-limitation" role="note">
           <p className="caso-limitation-title">{blocks.evidencia.limitationTitle}</p>
-          <p className="caso-limitation-body">
-            Synthetic{' '}
-            <span className="text-accent text-accent--metric">ROC-AUC</span> remains modest — a
-            documented property of the generator, not a hidden failure. The value here is
-            methodology: leakage controls, temporal splits, ranking metrics, and honest
-            explainability — not inflated performance claims.
-          </p>
+          <p className="caso-limitation-body">{blocks.evidencia.limitation}</p>
         </aside>
         <Folio
           id={folio04.id}
@@ -142,9 +136,9 @@ export function CasoNoShowSection() {
       <div className="caso-block caso-block--decision">
         <h3 className="caso-block-label">{blocks.decision.label}</h3>
         <p className="caso-block-lead">
-          Cierra el hilo de priorización (T6): una lista rankeada para outreach — soporte a{' '}
-          <span className="text-accent text-accent--decision">decisión</span>, no cuidado autónomo.
-          Lo documentado aquí es acotado: hallazgo, límite y evidencia citada.
+          {blocks.decision.leadBefore}
+          <span className="text-accent text-accent--decision">{blocks.decision.leadDecision}</span>
+          {blocks.decision.leadAfter}
         </p>
         <DecisionLog entries={casoNoShow.decisions} />
       </div>

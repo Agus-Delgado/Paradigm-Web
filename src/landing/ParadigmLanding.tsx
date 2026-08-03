@@ -7,29 +7,32 @@ import { HeroSection } from './sections/HeroSection'
 import { LiveFeaturesSection } from './sections/LiveFeaturesSection'
 import { ProblemSection } from './sections/ProblemSection'
 import { TrazabilidadGobiernoSection } from './sections/TrazabilidadGobiernoSection'
+import { LocaleProvider } from './i18n'
 import { CaseIndex } from './ui/CaseIndex'
 import { EvidenceProvider } from './ui/EvidenceProvider'
 
 export function ParadigmLanding() {
   return (
-    <EvidenceProvider>
-      <div className="landing">
-        <div className="landing-backdrop" aria-hidden="true" />
-        <div className="landing-shell">
-          <CaseIndex />
-          <div className="landing-main">
-            <HeroSection />
-            <ProblemSection />
-            <LiveFeaturesSection />
-            <CasoNoShowSection />
-            <ChainOfCustodySection />
-            <TrazabilidadGobiernoSection />
-            <CierreSection />
-            <ArchivoRelacionadoSection />
-            <FooterSection />
+    <LocaleProvider>
+      <EvidenceProvider>
+        <div className="landing">
+          <div className="landing-backdrop" aria-hidden="true" />
+          <div className="landing-shell">
+            <CaseIndex />
+            <div className="landing-main">
+              <HeroSection />
+              <ProblemSection />
+              <LiveFeaturesSection />
+              <CasoNoShowSection />
+              <ChainOfCustodySection />
+              <TrazabilidadGobiernoSection />
+              <CierreSection />
+              <ArchivoRelacionadoSection />
+              <FooterSection />
+            </div>
           </div>
         </div>
-      </div>
-    </EvidenceProvider>
+      </EvidenceProvider>
+    </LocaleProvider>
   )
 }

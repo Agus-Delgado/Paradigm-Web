@@ -1,8 +1,9 @@
-import { archivoRelacionado } from '../content'
+import { useContent } from '../i18n'
 import { useSceneReveal } from '../ui/useSceneReveal'
 
 export function ArchivoRelacionadoSection() {
   const revealRef = useSceneReveal<HTMLElement>()
+  const { archivoRelacionado } = useContent()
 
   return (
     <section

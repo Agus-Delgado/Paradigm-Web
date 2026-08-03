@@ -1,13 +1,11 @@
-import {
-  METRICS_DOC_URL,
-  governedKpis,
-  reproducibility,
-  trazabilidadGobierno,
-} from '../content'
+import { METRICS_DOC_URL } from '../content'
+import { useContent } from '../i18n'
 import { Citation } from '../ui/Citation'
 import { Section } from '../ui/Section'
 
 export function TrazabilidadGobiernoSection() {
+  const { trazabilidadGobierno, governedKpis, reproducibility, ui } = useContent()
+
   return (
     <Section
       id="trazabilidad"
@@ -17,11 +15,13 @@ export function TrazabilidadGobiernoSection() {
       className="trazabilidad-section"
     >
       <p className="section-intro">
-        Los{' '}
-        <span className="text-accent text-accent--metric">KPIs</span> no son números sueltos:
-        tienen definición,{' '}
-        <span className="text-accent text-accent--validation">validación</span> y un procedimiento
-        documentado para volver a producirlos.
+        {trazabilidadGobierno.introBefore}
+        <span className="text-accent text-accent--metric">{trazabilidadGobierno.introKpi}</span>
+        {trazabilidadGobierno.introMid}
+        <span className="text-accent text-accent--validation">
+          {trazabilidadGobierno.introValidation}
+        </span>
+        {trazabilidadGobierno.introAfter}
       </p>
       <p className="section-p">{governedKpis.intro}</p>
 
@@ -63,7 +63,7 @@ export function TrazabilidadGobiernoSection() {
       </p>
 
       <div className="gov-repro">
-        <h3 className="gov-repro-label">Reproducibilidad</h3>
+        <h3 className="gov-repro-label">{reproducibility.reproLabel}</h3>
         <p className="section-p">{reproducibility.intro}</p>
         <p className="section-p">{trazabilidadGobierno.commandsIntro}</p>
 
@@ -85,7 +85,7 @@ export function TrazabilidadGobiernoSection() {
           <summary className="gov-command-detail-summary">
             {trazabilidadGobierno.detailLabel}
           </summary>
-          <pre className="gov-command-pre" aria-label="Comandos completos del pipeline">
+          <pre className="gov-command-pre" aria-label={ui.pipelineCommandsAria}>
             <code>
               {reproducibility.detailCommands.map((line) => (
                 <span key={line} className="gov-command-line">
