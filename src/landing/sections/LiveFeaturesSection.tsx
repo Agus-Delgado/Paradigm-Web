@@ -1,5 +1,4 @@
 import { liveFeatures } from '../content'
-import { DeviceFrame } from '../ui/DeviceFrame'
 import { Section } from '../ui/Section'
 
 export function LiveFeaturesSection() {
@@ -7,22 +6,24 @@ export function LiveFeaturesSection() {
     <Section
       id="live-features"
       title={liveFeatures.title}
-      eyebrow="Demo"
+      eyebrow="Instrumentos"
+      sceneNumber="02"
+      sceneTemp="instrumentos"
       className="live-features-section"
     >
-      <p className="section-intro">{liveFeatures.intro}</p>
-      <p className="live-features-disclaimer" role="note">
-        {liveFeatures.disclaimer}
+      <p className="section-intro">
+        Instrumental coherente sobre el{' '}
+        <span className="text-accent text-accent--structure">mart gobernado</span>: análisis
+        guiado, exploración SQL, vistas de datos y ML explicable.
       </p>
-      <div className="card-grid card-grid--live-features">
+      <ul className="instrument-list" aria-label="Instrumentos del caso">
         {liveFeatures.items.map((item) => (
-          <article key={item.id} className="card card--live-feature">
-            <h3 className="card-title">{item.title}</h3>
-            <p className="card-body">{item.body}</p>
-            <DeviceFrame variant="card" src={item.imageSrc} alt={item.imageAlt} staticLabel />
-          </article>
+          <li key={item.id} className="instrument-row">
+            <span className="instrument-name">{item.title}</span>
+            <span className="instrument-body">{item.body}</span>
+          </li>
         ))}
-      </div>
+      </ul>
     </Section>
   )
 }

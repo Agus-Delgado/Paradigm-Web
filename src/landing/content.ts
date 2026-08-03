@@ -10,174 +10,75 @@ export const ARCHITECTURE_DOC_URL =
   'https://github.com/Agus-Delgado/Paradigm-/blob/main/docs/architecture.md'
 
 export const SCREENSHOTS_BASE = '/assets/screenshots'
-export const DASHBOARD_IMAGE_SRC = `${SCREENSHOTS_BASE}/analysis_results.png`
-export const DEMO_PREVIEW_IMAGE_SRC = `${SCREENSHOTS_BASE}/tabs_overview.png`
 
 export const hero = {
-  title: 'Data & AI Project Ecosystem',
-  subtitle: 'Paradigm · ClarusFlow · LumenVox',
-  description:
-    'Three complementary portfolio projects covering analytics engineering, Python data automation, data quality, NLP, reporting and business insights.',
-  subcopy:
-    'Paradigm is the deepest case study in the ecosystem, while ClarusFlow and LumenVox extend the portfolio into Python automation and NLP feedback intelligence.',
-  disclaimer:
-    'Synthetic and portfolio-only projects. No real patients, customers or organizations are represented.',
-  hubBadge: 'Portfolio hub',
-  flowSteps: ['Raw data', 'Quality', 'Analytics', 'NLP insights'] as const,
+  masthead: 'Paradigm — Sistema de análisis trazable',
+  caseId: 'Caso 001 · Ausentismo operativo',
+  title: 'Antes de tomar una decisión, alguien tiene que demostrar de dónde salió cada número.',
+  body: 'Turnos, pacientes, especialidades y señales operativas parten de fuentes fragmentadas. Paradigm las convierte en un análisis validado, reproducible y documentado hasta la decisión.',
+  fragments: [
+    'appointments.csv',
+    'patients.csv',
+    'specialty_id',
+    'attendance_status',
+    'lead_time_days',
+  ] as const,
+  continueHref: '#problem',
+  continueLabel: 'Continuar a la apertura',
 } as const
 
-export const heroEcosystemMap = {
-  title: 'Ecosystem map',
-  footer: 'From raw data and messy files to trusted analytics and AI-supported insight.',
-  layers: [
-    {
-      project: 'Paradigm',
-      tagline: 'Structured analytics',
-      signals: 'Governed KPIs · BI · Healthcare analytics',
-      accent: 'paradigm',
-    },
-    {
-      project: 'ClarusFlow',
-      tagline: 'Operational data automation',
-      signals: 'Python · Data quality · ETL',
-      accent: 'clarusflow',
-    },
-    {
-      project: 'LumenVox',
-      tagline: 'Text intelligence',
-      signals: 'NLP · Feedback · Executive insights',
-      accent: 'lumenvox',
-    },
-  ],
-} as const
+/**
+ * CaseIndex scenes. Demand Forecast is omitted (no real content in repo).
+ */
+export const caseIndex = [
+  { id: 'apertura', label: 'Apertura', targetId: 'problem' },
+  { id: 'instrumentos', label: 'Instrumentos', targetId: 'live-features' },
+  { id: 'caso-no-show', label: 'Caso Clinic No-Show', targetId: 'caso-no-show' },
+  { id: 'cadena-custodia', label: 'Cadena de custodia', targetId: 'cadena-custodia' },
+  { id: 'trazabilidad-gobierno', label: 'Trazabilidad y gobierno', targetId: 'trazabilidad' },
+  { id: 'cierre', label: 'Cierre', targetId: 'cierre' },
+] as const
 
+export type CaseIndexEntry = (typeof caseIndex)[number]
+export type CaseSceneStatus = 'pending' | 'active' | 'visited'
+
+/** Instrumentos — text index of capabilities; screenshots live only in the Caso folios. */
 export const liveFeatures = {
   title: 'Paradigm in action',
   intro:
-    'Static screenshots from the separate interactive demo — guided analysis, SQL exploration, immersive data views, and explainable ML on the governed mart.',
-  disclaimer:
-    'These are static screenshots from the separate interactive Paradigm demo. The live Streamlit portal is maintained separately from this landing.',
+    'Instrumental coherente sobre el mart gobernado: análisis guiado, exploración SQL, vistas de datos y ML explicable.',
   items: [
     {
       id: 'landing',
       title: 'Landing Experience',
       body: 'Unified entry hub to every Streamlit module: datasets, wizards, explorers, and ML — one governed workflow.',
-      imageSrc: `${SCREENSHOTS_BASE}/landing_hero.png`,
-      imageAlt: 'Paradigm Streamlit landing — module navigation on synthetic data',
     },
     {
       id: 'wizard',
       title: 'Root-Cause Wizard',
       body: 'Contextual step-by-step questions that narrow where operational friction concentrates across your synthetic mart.',
-      imageSrc: `${SCREENSHOTS_BASE}/wizard_questions.png`,
-      imageAlt: 'Root-cause wizard — guided analytical questions',
     },
     {
       id: 'sql-explorer',
       title: 'SQL Explorer + NL→SQL',
       body: 'Query the governed mart with SQL or natural language — interactive, schema-aware exploration without leaving the demo.',
-      imageSrc: `${SCREENSHOTS_BASE}/sql_explorer.png`,
-      imageAlt: 'SQL Explorer with natural language to SQL on the governed mart',
     },
     {
       id: 'data-explorer',
       title: 'Immersive Data Explorer',
       body: 'Row-level inspection of synthetic outpatient records with filters, sorting, and drill-down tables.',
-      imageSrc: `${SCREENSHOTS_BASE}/data_explorer.png`,
-      imageAlt: 'Immersive data explorer — filtered outpatient records',
     },
     {
       id: 'analysis-results',
       title: 'Guided Analysis + Recommendations',
       body: 'Guided KPI analysis with charts and actionable recommendations drawn from validated governed views.',
-      imageSrc: `${SCREENSHOTS_BASE}/analysis_results.png`,
-      imageAlt: 'Guided analysis results with KPI charts and recommendations',
     },
     {
       id: 'no-show-shap',
       title: 'No-Show ML + SHAP Explainability',
       body: 'Ranking experiment with SHAP beeswarm and local plots — auditable drivers, not a black-box score.',
-      imageSrc: `${SCREENSHOTS_BASE}/no_show_shap.png`,
-      imageAlt: 'No-show ML prioritization with SHAP explainability plots',
     },
   ],
-} as const
-
-export const badges = ['Python', 'SQL', 'NLP', 'Synthetic Data', 'BI'] as const
-
-export const ecosystem = {
-  title: 'Three complementary Data & AI projects',
-  intro:
-    'Each project focuses on a different layer of applied data work: governed analytics, operational automation, and NLP-driven insight generation.',
-  projects: [
-    {
-      id: 'paradigm',
-      title: 'Paradigm',
-      label: 'Analytics Engineering · BI · Healthcare Analytics',
-      role: 'Governed analytics and BI layer',
-      body: 'Governed analytics case study for outpatient operations, with synthetic data, analytical modeling, validated KPIs, BI-ready outputs and scoped ML experimentation.',
-      signals: ['SQL', 'BI', 'KPI Governance', 'ML Experiment'],
-      accent: 'paradigm',
-    },
-    {
-      id: 'clarusflow',
-      title: 'ClarusFlow',
-      label: 'Python Data Automation · Data Quality · ETL',
-      role: 'Operational automation and data quality layer',
-      body: 'Python pipeline that transforms messy SaaS operational files into clean, validated and analysis-ready datasets with QA reports and operational summaries.',
-      signals: ['Python', 'pandas', 'ETL', 'Data Quality'],
-      accent: 'clarusflow',
-    },
-    {
-      id: 'lumenvox',
-      title: 'LumenVox',
-      label: 'NLP · Feedback Intelligence · Executive Reporting',
-      role: 'Text intelligence and executive insight layer',
-      body: 'NLP project that converts unstructured feedback into sentiment, recurring themes, critical signals and executive insights.',
-      signals: ['NLP', 'Sentiment', 'Themes', 'Reporting'],
-      accent: 'lumenvox',
-    },
-  ],
-} as const
-
-export const complementarity = {
-  title: 'Different layers, one portfolio narrative',
-  intro:
-    'The three projects are intentionally different. Together, they show how operational data, messy files and unstructured text can become trusted analytics and decision-ready insights.',
-  closing:
-    'Together, they demonstrate a practical Data/BI/AI profile across structured analytics, file automation and unstructured text intelligence.',
-  layers: [
-    {
-      title: 'Data foundation and governed analytics',
-      project: 'Paradigm',
-      output: 'Governed mart & BI-ready KPIs',
-      skills: ['SQL', 'BI', 'KPI governance', 'analytical modeling', 'ML experiment'],
-      accent: 'paradigm',
-    },
-    {
-      title: 'Operational automation and data quality',
-      project: 'ClarusFlow',
-      output: 'Validated datasets & QA reports',
-      skills: ['Python', 'pandas', 'ingestion', 'cleaning', 'validation', 'ETL'],
-      accent: 'clarusflow',
-    },
-    {
-      title: 'Text intelligence and executive insight',
-      project: 'LumenVox',
-      output: 'Sentiment themes & executive briefs',
-      skills: ['NLP', 'sentiment analysis', 'topic classification', 'reporting'],
-      accent: 'lumenvox',
-    },
-  ],
-} as const
-
-export const paradigmDeepDive = {
-  eyebrow: 'Deep Dive',
-  title: 'Paradigm Deep Dive',
-  subtitle: 'A complete analytics engineering case study for healthcare operations.',
-  body: 'The following sections go deeper into Paradigm because it is the most developed case study in the ecosystem. It covers pipeline design, governed KPIs, dashboard evidence, scoped ML experimentation and reproducibility.',
-  trioReminder:
-    'Paradigm is the most developed case study; ClarusFlow and LumenVox are covered above.',
 } as const
 
 export const problem = {
@@ -202,42 +103,9 @@ export const problemHighlights = [
   },
 ] as const
 
-export const pipelineSection = {
-  title: 'How it works',
-  eyebrow: 'Pipeline',
-  intro:
-    'Three phases from synthetic inputs to governed metrics and decision support — scripted, documented and reproducible.',
-} as const
-
-export const pipelinePhases = [
-  {
-    id: 'phase-1',
-    title: 'Build the data foundation',
-    accent: 'cyan' as const,
-    chips: ['Synthetic CSVs', 'SQLite Mart', 'Quality Checks'] as const,
-  },
-  {
-    id: 'phase-2',
-    title: 'Govern the analytics layer',
-    accent: 'blue' as const,
-    chips: ['KPI Validation', 'Governed KPI Views', 'BI Exports'] as const,
-  },
-  {
-    id: 'phase-3',
-    title: 'Deliver decision support',
-    accent: 'emerald' as const,
-    chips: [
-      'Power BI / Tableau',
-      'Executive Dashboard',
-      'ML Prioritization Experiment',
-    ] as const,
-  },
-] as const
-
 export const architectureHub = {
   headline: 'One governed mart. Multiple trusted outputs.',
   centerNode: 'Governed SQLite Mart',
-  /** Linear flow after the mart (visual order). */
   flow: ['Power BI', 'Tableau', 'KPI Validation', 'ML Experiment'] as const,
 } as const
 
@@ -273,22 +141,64 @@ export const architecture = {
   ],
 } as const
 
-export const dashboardEvidence = {
-  title: 'Dashboard preview',
-  caption:
-    'Executive-style monitoring on synthetic data: attendance, cancellations and revenue signals — for portfolio review only.',
-  disclaimer:
-    'These are static screenshots from the separate interactive Paradigm demo. Not an embedded application.',
-  screenshotAlt: 'Power BI executive dashboard — synthetic sample',
+/** Cadena de custodia — seven linear nodes mapped from architecture + case evidence. */
+export const chainOfCustody = {
+  eyebrow: 'Escena 05',
+  title: 'Cadena de custodia',
+  intro: architecture.intro,
+  headline: architectureHub.headline,
+  listLabel: 'Ver como lista',
+  nodes: [
+    {
+      id: 'fuentes',
+      label: 'Fuentes',
+      title: architecture.cards[0].title,
+      body: architecture.cards[0].body,
+    },
+    {
+      id: 'preparacion',
+      label: 'Preparación y validación',
+      title: architecture.cards[3].title,
+      body: architecture.cards[3].body,
+    },
+    {
+      id: 'mart',
+      label: 'Mart gobernado',
+      title: architectureHub.centerNode,
+      body: `${architecture.cards[1].body} Hub: ${architectureHub.centerNode}.`,
+    },
+    {
+      id: 'analisis',
+      label: 'Análisis y modelos',
+      title: architecture.cards[5].title,
+      body: architecture.cards[5].body,
+    },
+    {
+      id: 'evidencia',
+      label: 'Evidencia',
+      title: 'Evidencia del caso',
+      body: 'Los folios del Caso Clinic No-Show documentan exploración y resultados sobre el mismo mart — no una captura aislada.',
+      citationPhrase: 'folios del Caso Clinic No-Show',
+      folioIds: ['no-show-02', 'no-show-04'] as const,
+    },
+    {
+      id: 'salidas',
+      label: 'Salidas BI y documentación',
+      title: `${architecture.cards[2].title} · ${architecture.cards[4].title}`,
+      body: `${architecture.cards[2].body} ${architecture.cards[4].body}`,
+    },
+    {
+      id: 'decision',
+      label: 'Decisión',
+      title: 'Decisión documentada',
+      body: 'El DecisionLog del Caso Clinic No-Show registra hallazgo, limitación y decisión con evidencia citada — el eslabón final de la cadena.',
+      href: '#caso-no-show',
+      hrefLabel: 'Ir al caso y DecisionLog',
+    },
+  ],
 } as const
 
-export const demoPreview = {
-  title: 'Workflow preview',
-  intro:
-    'A static overview of how the Paradigm analytical modules connect — portfolio evidence from the separate interactive demo.',
-  disclaimer: 'Static screenshot from the separate interactive demo. Not an embedded application.',
-  imageAlt: 'Paradigm demo module overview — static portfolio screenshot on synthetic data',
-} as const
+export type ChainOfCustodyNode = (typeof chainOfCustody.nodes)[number]
 
 export const governedKpis = {
   title: 'Metrics you can trust',
@@ -342,81 +252,116 @@ export const analyticalQuestions = [
 ] as const
 
 export const mlSection = {
-  title: 'Explainable No-Show Prioritization',
-  intro:
-    'A ranking experiment on the governed mart — SHAP explainability, ARS revenue simulation, and a Streamlit demo. Decision support, not production prediction.',
-  badges: [
-    { label: 'Governed Mart', variant: 'default' as const },
-    { label: 'SHAP Explainability', variant: 'emerald' as const },
-    { label: 'ARS Revenue Simulation', variant: 'emerald' as const },
-    { label: 'Streamlit', variant: 'blue' as const },
-    { label: 'scikit-learn', variant: 'default' as const },
-  ],
-  features: [
-    {
-      title: 'SHAP explainability',
-      body: 'SHAP visualizations — global beeswarm summary and local force plots — surface no-show drivers from the governed mart. Auditable for technical and business stakeholders.',
-      accent: 'emerald' as const,
-      highlight: false as const,
-      viz: 'shap' as const,
-      vizCaption: 'SHAP beeswarm summary — illustrative',
-    },
-    {
-      title: 'ARS revenue simulation',
-      body: 'What-if scenarios on the ranked list: outreach on top-N patients, slots recovered, and revenue impact in Argentine pesos (ARS). Synthetic case study — not a clinical or financial guarantee.',
-      accent: 'cyan' as const,
-      highlight: true,
-      viz: 'ars-simulator' as const,
-      vizCaption: 'ARS revenue simulation — illustrative',
-    },
-    {
-      title: 'Streamlit integration',
-      body: 'One demo ties ranking output, SHAP explainability, and ARS revenue simulation — all reading from the governed mart. Reproducible via make demo.',
-      accent: 'blue' as const,
-      highlight: false as const,
-    },
-  ],
   calloutTitle: 'Documented limitation',
   callout:
     'Synthetic ROC-AUC remains modest — a documented property of the generator, not a hidden failure. The value here is methodology: leakage controls, temporal splits, ranking metrics, and honest explainability — not inflated performance claims.',
 } as const
 
-export const recentImprovements = {
-  title: 'Recent Improvements',
-  eyebrow: "What's new",
+/** Caso Clinic No-Show — narrative Pregunta → Exploración → Evidencia → Decisión. */
+export const casoNoShow = {
+  eyebrow: 'Caso 01 — Ausentismo',
+  title: 'Clinic No-Show: de la pregunta operativa a la decisión documentada',
   intro:
-    'Latest capabilities on the governed mart — SHAP explainability, ARS revenue simulation, and one-command reproducibility.',
-  items: [
+    'Un solo recorrido sobre el mart gobernado: formular la pregunta, explorar el grano, leer la evidencia y registrar qué se decide — con limitación explícita, sin cifras inventadas.',
+  scope: 'Caso 01',
+  source: 'Captura estática — demo Streamlit separada',
+  blocks: {
+    pregunta: {
+      label: 'Pregunta',
+      lead: 'La operación necesita saber dónde se concentra el ausentismo antes de repartir el mismo esfuerzo de confirmación a todos los turnos.',
+      bodyBefore: 'El hilo empieza en el asistente de causa raíz: preguntas contextuales que acotan ',
+      citationPhrase: 'dónde se concentra la fricción operativa',
+      bodyAfter:
+        ' — tendencias en el tiempo, dimensiones con más fuga y cancelaciones tardías — sin sustituir el juicio clínico ni operacional.',
+      threads: ['T1', 'T2', 'T3'] as const,
+    },
+    exploracion: {
+      label: 'Exploración',
+      lead: 'Con la pregunta acotada, el análisis baja al mart: consultas y filas sobre la misma base gobernada, no sobre un extracto paralelo.',
+      bodyBefore: 'El ',
+      citationSql: 'SQL Explorer (y NL→SQL)',
+      bodyMid: ' interroga el esquema; el ',
+      citationData: 'Data Explorer',
+      bodyAfter:
+        ' inspecciona registros sintéticos ambulatorios con filtros y drill-down — el mismo grano que alimenta KPIs y el experimento de priorización.',
+    },
+    evidencia: {
+      label: 'Evidencia',
+      lead: 'La evidencia no es un score opaco: es análisis guiado más explicabilidad sobre el ranking.',
+      bodyBefore: 'El ',
+      citationAnalysis: 'análisis guiado con KPIs y recomendaciones',
+      bodyMid:
+        ' resume señales de asistencia y cancelación; el experimento de priorización aporta ',
+      citationShap: 'SHAP global y local',
+      bodyAfter:
+        ' sobre features del mart, y escenarios ARS de outreach como lenguaje de negocio — soporte a decisión, no predicción productiva.',
+      limitationTitle: mlSection.calloutTitle,
+      limitation: mlSection.callout,
+    },
+    decision: {
+      label: 'Decisión',
+      lead: 'Cierra el hilo de priorización (T6): una lista rankeada para outreach — soporte a decisión, no cuidado autónomo. Lo documentado aquí es acotado: hallazgo, límite y evidencia citada.',
+    },
+  },
+  folios: [
     {
-      badge: 'SHAP',
-      badgeVariant: 'emerald' as const,
-      title: 'SHAP explainability',
-      body: 'SHAP visualizations on governed mart features — global and local views make influence auditable, not a black-box score.',
-      viz: 'shap' as const,
-      vizCaption: 'SHAP summary plot',
+      id: 'no-show-01',
+      number: '01',
+      title: liveFeatures.items[1].title,
+      src: `${SCREENSHOTS_BASE}/wizard_questions.png`,
+      alt: 'Root-cause wizard — guided analytical questions',
+      context: liveFeatures.items[1].body,
     },
     {
-      badge: 'ARS',
-      badgeVariant: 'emerald' as const,
-      title: 'ARS revenue simulation',
-      body: 'Outreach scenarios with slots recovered and revenue impact in ARS — translating model output into business language.',
-      viz: 'ars-simulator' as const,
-      vizCaption: 'ARS scenario bars',
+      id: 'no-show-02',
+      number: '02',
+      title: liveFeatures.items[2].title,
+      src: `${SCREENSHOTS_BASE}/sql_explorer.png`,
+      alt: 'SQL Explorer with natural language to SQL on the governed mart',
+      context: liveFeatures.items[2].body,
     },
     {
-      badge: 'Demo',
-      badgeVariant: 'blue' as const,
-      title: 'Streamlit integration',
-      body: 'Ranking, SHAP explainability, and ARS revenue simulation in one interactive workflow — all from the governed mart.',
+      id: 'no-show-03',
+      number: '03',
+      title: liveFeatures.items[3].title,
+      src: `${SCREENSHOTS_BASE}/data_explorer.png`,
+      alt: 'Immersive data explorer — filtered outpatient records',
+      context: liveFeatures.items[3].body,
     },
     {
-      badge: 'make',
-      badgeVariant: 'default' as const,
-      title: 'make all / ml / demo',
-      body: 'make all runs the full pipeline; make ml trains and explains; make demo launches Streamlit — no manual script chaining.',
+      id: 'no-show-04',
+      number: '04',
+      title: liveFeatures.items[4].title,
+      src: `${SCREENSHOTS_BASE}/analysis_results.png`,
+      alt: 'Guided analysis results with KPI charts and recommendations',
+      context: liveFeatures.items[4].body,
+    },
+    {
+      id: 'no-show-05',
+      number: '05',
+      title: liveFeatures.items[5].title,
+      src: `${SCREENSHOTS_BASE}/no_show_shap.png`,
+      alt: 'No-show ML prioritization with SHAP explainability plots',
+      context: liveFeatures.items[5].body,
+    },
+  ],
+  decisions: [
+    {
+      id: 'decision-no-show-01',
+      question: '¿Dónde concentrar el esfuerzo de confirmación activa?',
+      evidenceFolioIds: ['no-show-04', 'no-show-05'],
+      finding:
+        'El modelo prioriza turnos con mayor riesgo de ausencia usando el mart gobernado y explicabilidad SHAP — a nivel global y local.',
+      limitation:
+        'El ROC-AUC sobre datos sintéticos es modesto — una propiedad documentada del generador, no una falla oculta.',
+      decision:
+        'Concentrar confirmaciones y recordatorios en los segmentos con mayor riesgo, en vez de aplicar el mismo esfuerzo a todos.',
+      status: 'documented' as const,
     },
   ],
 } as const
+
+export type DecisionEntry = (typeof casoNoShow.decisions)[number]
 
 export const reproducibility = {
   title: 'Run the pipeline',
@@ -426,23 +371,16 @@ export const reproducibility = {
     {
       cmd: 'make all',
       desc: 'Full pipeline: synthetic data → governed mart → BI exports → validation',
-      icon: 'terminal' as const,
-      primary: true,
     },
     {
       cmd: 'make ml',
       desc: 'Training, SHAP explainability, and ranking artifacts from the governed mart',
-      icon: 'sparkline' as const,
-      primary: false,
     },
     {
       cmd: 'make demo',
       desc: 'Streamlit app: SHAP visualizations + ARS revenue simulation',
-      icon: 'chart' as const,
-      primary: false,
     },
   ],
-  detailLabel: 'Under the hood',
   detailCommands: [
     'python scripts/generate_paradigm_v2_synthetic.py',
     'python scripts/build_sqlite_mart.py',
@@ -454,9 +392,50 @@ export const reproducibility = {
   ],
 } as const
 
-export const finalCta = {
-  title: 'From data foundations to applied AI',
-  body: 'Paradigm, ClarusFlow and LumenVox show three complementary layers of modern data work: governed analytics, Python automation, and NLP-driven business intelligence.',
+/** Trazabilidad y gobierno — KPIs + reproducibilidad fused. */
+export const trazabilidadGobierno = {
+  eyebrow: 'Escena 06',
+  title: 'Trazabilidad y gobierno',
+  intro:
+    'Los KPIs no son números sueltos: tienen definición, validación y un procedimiento documentado para volver a producirlos.',
+  kpiCitationLabel: 'No-show rate',
+  kpiCitationFolioIds: ['no-show-04'] as const,
+  commandsIntro:
+    'make all runs the full pipeline; make ml trains and explains; make demo launches Streamlit — no manual script chaining.',
+  detailLabel: 'Ver comandos completos',
+} as const
+
+/** Cierre del expediente — índice completo + enlaces documentales. */
+export const cierre = {
+  eyebrow: 'Cierre',
+  title: 'Expediente recorrido',
+  body: 'Este es el índice completo del caso. Podés volver a cualquier escena o abrir el material fuente.',
+  seal: 'Paradigm — expediente cerrado en documentación',
+  links: [
+    { href: GITHUB_REPO_URL, label: 'Repositorio' },
+    { href: METRICS_DOC_URL, label: 'Métricas' },
+    { href: ARCHITECTURE_DOC_URL, label: 'Arquitectura' },
+  ] as const,
+  indexExpandLabel: 'Ver índice completo',
+} as const
+
+/** Archivo relacionado — portfolio appendix outside CaseIndex. */
+export const archivoRelacionado = {
+  eyebrow: 'Archivo relacionado',
+  intro:
+    'Together, they demonstrate a practical Data/BI/AI profile across structured analytics, file automation and unstructured text intelligence.',
+  projects: [
+    {
+      id: 'clarusflow',
+      title: 'ClarusFlow',
+      role: 'Operational automation and data quality layer',
+    },
+    {
+      id: 'lumenvox',
+      title: 'LumenVox',
+      role: 'Text intelligence and executive insight layer',
+    },
+  ],
 } as const
 
 export const footer = {
@@ -464,8 +443,8 @@ export const footer = {
   line2:
     'Synthetic portfolio projects only. No real patients, customers, providers or organizations are represented.',
   links: [
-    { href: '#ecosystem', label: 'Projects' },
-    { href: '#complementarity', label: 'Layers' },
-    { href: '#paradigm-deep-dive', label: 'Deep Dive' },
+    { href: '#problem', label: 'Apertura' },
+    { href: '#cierre', label: 'Cierre' },
+    { href: '#archivo', label: 'Archivo' },
   ],
 } as const
